@@ -1,0 +1,26 @@
+
+# Capstone Project
+.What is the problem you want to solve?
+
+The problem I want to solve is to create a quick and easy way to report financial budget variances for my organization.
+
+.Who is your client and why do they care about this problem? In other words, what will your client DO or DECIDE based on your analysis that they wouldn't have otherwise?
+
+My client is my departments that I manage, as well as the accounting support staff.  We care about this issue because the current system in place is a completely manual excel based process.  This process is time consuming and is not perfect.  By creating an R based budget variance reporting system it will free up time so that support staff can spend time focusing on forecasting vs. looking backwards at settled data. 
+  
+.What data are you going to use for this? How will you acquire this data?
+
+I've been given the go ahead from management to use our account structure, and substitute our real data with generic data.  This will be scrubbed general ledger data from our accounting system removing all proprietary information.  This will also involve scrubbing all of our vendor data from our purchase order system removing all proprietary information, replacing vendor, Purchase Order, Invoice numbers with dummy data. I will take the real outputs and manipulate the raw data in excel prior to loading the data into R and Github.
+
+.In brief, outline your approach to solving this problem (knowing that this might change later).
+
+My approach is to identify the necesary data needed to accrurately provide monthly and annual budget to actual variance data using one department as a control, while stripping out any proprietary data.  I will do this using exports of the data from their respective databases and or spreadheets using on department as a control.  WIth the data available to me details on budget, budget figures ecetera will be adjusted to dummy figures. Using actual expenditure data I will retain the account structure, replace actual expenditure dollars with dummy values.  Using our purchase order system, I will utilize the invoice detail data for expenditures and strip the proprietary information out by for an example taking a real vendor's name and replacing that with vendor 1, 2, 3... Purchase order information will also be stripped out, including its detail using the same logic.  Using this "cleaned" data I wil find common features within the data sets to link together the limited expenditure data from the general ledger with the details from the purchase order system to provide all the detail available on certain expenditures to provide a history and detail.  Once there is detailed expenditure data available and linked togethe, I will then find the common features within the budget detail to link to that expenditure data.  Then providing a budget to actual variance, in a report format.  Using this historical tranaction detail, I would also like to create a projection on expenditures for the remainder of the year. 
+
+.What are your deliverables? Typically, this would include code, along with a paper and/or a slide deck.
+
+My project deliverable will include the code for the budget variance reporting and forecast, along with report using R Markdown along with graphing features.  
+
+  
+
+  
+  
