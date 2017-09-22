@@ -1,0 +1,119 @@
+---
+title: "Capstone_Project_Data_Manipulation"
+author: "Cathy Kiriakos"
+date: "September 12, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages(formatR)
+```
+
+```{r}
+library(magrittr)
+library(formatR)
+library(dplyr)
+library(tidyr)
+library(devtools)
+```
+
+```{r}
+#Transform Avantis Data: Step 1 pull apart GL data using tidyr: note cntrl-shift-m = pipe operator shortcut, place "" around column names!
+Avantis_Transformed <- Capstone_Avantis_Transformed %>% 
+  separate("G/L Account number", c("Company Id","Account Number", "Expense Code", "Department","Location","Activity Code","Center" ), sep = "\\-") %>% 
+  #Transform Avantis Data: Step 2 pull apart date into month and year
+  separate("Processing Date", c("Year","Month", "Day" ), sep = "\\-")
+#Trim leading and trailing white space from columns
+Avantis_Transformed <- data.frame(lapply(Avantis_Transformed,trimws), stringsAsFactors = FALSE)
+
+
+  
+head(Avantis_Transformed,10)
+
+```
+
+```{r}
+#Transform GL Data: Step 1: break apart GL Description to identifiers - Segment: (INE or ISS, all others will remain whole), Recevable/Non Recevable/Cat Name (1000, 1001, 1010) or if issue catalog #, PO Number, Invoice Number/Warehouse Detail -  separate gl desc
+#Note: may need to call as.numberic or as.character to pull values correctly
+
+GL_Transformed <- Capstone_GL_Transformed %>% 
+  separate("descp", c("Segment","Recevable/Catalog Code", "PO Number", "Invoice Number/Warehouse Detail" ), sep = "\\-", fill = "left") 
+#Trim leading and trailing white space from columns
+GL_Transformed <- data.frame(lapply(GL_Transformed,trimws), stringsAsFactors = FALSE)
+
+head(GL_Transformed,10)
+
+```
+
+```{r}
+#Test vector Types 
+is.numeric(GL_Transformed$account)
+is.numeric(GL_Transformed$expense_code)
+is.numeric(GL_Transformed$department)
+is.numeric(GL_Transformed$location)
+is.numeric(GL_Transformed$activity)
+is.numeric(GL_Transformed$SumOftrans_amt)
+```
+```{r}
+head(Avantis_Transformed)
+```
+
+```{r}
+head(GL_Transformed)
+str(GL_Transformed)
+```
+
+```{r}
+#check vector type
+typeof(GL_Transformed$account)
+typeof(Avantis_Transformed$Account.Number)
+typeof(GL_Transformed$department)
+typeof(Avantis_Transformed$Department)
+typeof(GL_Transformed$expense_code)
+typeof(Avantis_Transformed$Expense.Code)
+typeof(GL_Transformed$posting_yr)
+typeof(GL_Transformed$posting_pd)
+typeof(Avantis_Transformed$Month)
+```
+
+```{r}
+Code_Lookup <- read.csv("C:/Users/kiriakosc/Documents/Code Lookup.csv", header=TRUE, stringsAsFactors = FALSE)
+Code_Lookup[,"Expense.Code"] <- as.character(Code_Lookup[,"Expense.Code"])
+Code_Lookup[,"Activity.Code"] <- as.character(Code_Lookup[,"Activity.Code"])
+Code_Lookup[,"Account.Number"] <- as.character(Code_Lookup[,"Account.Number"])
+
+Code_Lookup <- data.frame(lapply(Code_Lookup,trimws), stringsAsFactors = FALSE)
+
+str(Code_Lookup)
+
+```
+
+
+```{r}
+# Full join on Avantis and GL Tables to pull in all relevant data   
+
+GL_Final <-  merge( GL_Transformed,Avantis_Transformed, 
+                                        by.x = c("account","department","expense_code", "SumOftrans_amt","posting_yr","posting_pd"),
+                                        by.y = c("Account.Number","Department","Expense.Code","Extended.line.amount_1","Year","Month"),all.x = TRUE)
+GL_Final <- merge(GL_Final, Code_Lookup,
+                  by.x = c("activity","expense_code", "account"),
+                  by.y = c("Activity.Code", "Expense.Code", "Account.Number"), all.x = TRUE)
+
+str(GL_Final)
+                            
+```
+
+```{r}
+#Convert Sum of Trans Amount to Numeric
+GL_Final[,"SumOftrans_amt"] <- as.numeric(GL_Final[,"SumOftrans_amt"])
+
+```
+
+
+
+
+
