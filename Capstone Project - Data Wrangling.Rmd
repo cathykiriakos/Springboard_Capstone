@@ -95,16 +95,31 @@ str(Code_Lookup)
 
 ```{r}
 # Full join on Avantis and GL Tables to pull in all relevant data   
-
 GL_Final <-  merge( GL_Transformed,Avantis_Transformed, 
                                         by.x = c("account","department","expense_code", "SumOftrans_amt","posting_yr","posting_pd"),
                                         by.y = c("Account.Number","Department","Expense.Code","Extended.line.amount_1","Year","Month"),all.x = TRUE)
-GL_Final <- merge(GL_Final, Code_Lookup,
-                  by.x = c("activity","expense_code", "account"),
-                  by.y = c("Activity.Code", "Expense.Code", "Account.Number"), all.x = TRUE)
+```
 
-str(GL_Final)
-                            
+```{r}
+#Break Apart Code Lookup to make merge for descriptions function
+
+Activity_Code_Lookup <- select(Code_Lookup, Activity.Code, Activity.Description)
+Expense_Code_Lookup <- select(Code_Lookup, Expense.Code, Expense.Code.Description, Expense.Code.Category)
+Account_Code_Lookup <- select(Code_Lookup, Account.Number, Account.Description)
+
+```
+
+```{r}
+#Merge GL_Final with Account, Expense, Activity Code Descriptions
+GL_Final <- merge(GL_Final, Activity_Code_Lookup,
+                  by.x = c("activity"),
+                  by.y = c("Activity.Code"), all.x = TRUE)
+GL_Final <- merge(GL_Final, Expense_Code_Lookup,
+                  by.x = c("expense_code"),
+                  by.y = c("Expense.Code"), all.x = TRUE)
+GL_Final <- merge(GL_Final, Account_Code_Lookup,
+                  by.x = c("account"),
+                  by.y = c("Account.Number"), all.x = TRUE)
 ```
 
 ```{r}
@@ -112,6 +127,7 @@ str(GL_Final)
 GL_Final[,"SumOftrans_amt"] <- as.numeric(GL_Final[,"SumOftrans_amt"])
 
 ```
+
 
 
 
