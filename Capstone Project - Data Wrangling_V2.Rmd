@@ -1,0 +1,171 @@
+---
+title: "Capstone_Project_Data_Manipulation"
+author: "Cathy Kiriakos"
+date: "September 12, 2017"
+output: html_document
+---
+
+```{r setwd, include=FALSE}
+path <- file.path("C:", "Users","kiriakosc", ".git", "Springboard_Capstone")
+setwd(path)
+```
+
+```{r list_wd_files, include=FALSE}
+list.files(path)
+```
+
+
+```{r load_csvs, warning=FALSE, include=FALSE}
+Capstone_Avantis_Transformed <-read.csv(file.path(path,"Capstone_Avantis_Transformed.csv")) #Avantis base data
+Capstone_GL_Transformed <-read.csv(file.path(path,"Capstone_GL_Transformed.csv")) #GL base data
+Budget_Information <- read.csv(file.path(path,"Budget Information.csv"))
+```
+
+
+```{r load_packages, include=FALSE}
+library(magrittr)
+library(formatR)
+library(dplyr)
+library(tidyr)
+library(devtools)
+```
+
+```{r Transform_Avantis_Data}
+#Transform Avantis Data: Step 1 pull apart GL data using tidyr: note cntrl-shift-m = pipe operator shortcut, place "" around column names!
+Avantis_Transformed <- Capstone_Avantis_Transformed %>% 
+  separate("G.L.Account.number", c("Company Id","Account Number", "Expense Code", "Department","Location","Activity Code","Center" ), sep = "\\-") %>% 
+  #Transform Avantis Data: Step 2 pull apart date into month and year
+  separate("Processing.Date", c("Year","Month", "Day" ), sep = "\\-")
+#Trim leading and trailing white space from columns
+Avantis_Transformed <- data.frame(lapply(Avantis_Transformed,trimws), stringsAsFactors = FALSE)
+
+#View Output  
+head(Avantis_Transformed,10)
+```
+
+```{r Transform_GL_Data}
+#Transform GL Data: Step 1: break apart GL Description to identifiers - Segment: (INE or ISS, all others will remain whole), Recevable/Non Recevable/Cat Name (1000, 1001, 1010) or if issue catalog #, PO Number, Invoice Number/Warehouse Detail -  separate gl desc
+#Note: may need to call as.numberic or as.character to pull values correctly
+
+GL_Transformed <- Capstone_GL_Transformed %>% 
+  separate("descp", c("Segment","Recevable/Catalog Code", "PO Number", "Invoice Number/Warehouse Detail" ), sep = "\\-", fill = "left") 
+#Trim leading and trailing white space from columns
+GL_Transformed <- data.frame(lapply(GL_Transformed,trimws), stringsAsFactors = FALSE)
+
+head(GL_Transformed,10)
+```
+
+```{r Test_Vector_Types, include=FALSE}
+#Test vector Types 
+is.numeric(GL_Transformed$account)
+is.numeric(GL_Transformed$expense_code)
+is.numeric(GL_Transformed$department)
+is.numeric(GL_Transformed$location)
+is.numeric(GL_Transformed$activity)
+is.numeric(GL_Transformed$SumOftrans_amt)
+```
+```{r View_Data_Avantis_Tranformed}
+#View Data frame to ensure merge will funciton
+head(Avantis_Transformed)
+```
+
+```{r View_GL_Transformed, include=FALSE}
+#View Data frame to ensure merge will funciton
+head(GL_Transformed)
+str(GL_Transformed)
+```
+
+```{r Check_Vector_Types, include=FALSE}
+#check vector type
+typeof(GL_Transformed$account)
+typeof(Avantis_Transformed$Account.Number)
+typeof(GL_Transformed$department)
+typeof(Avantis_Transformed$Department)
+typeof(GL_Transformed$expense_code)
+typeof(Avantis_Transformed$Expense.Code)
+typeof(GL_Transformed$posting_yr)
+typeof(GL_Transformed$posting_pd)
+typeof(Avantis_Transformed$Month)
+```
+
+```{r Load_Account_Lookup_ConvertAsCharacter}
+#Convert Account Code Lookups to characer for merge
+
+Code_Lookup <-read.csv(file.path(path,"Code Lookup.csv"), header = TRUE, stringsAsFactors = FALSE) #Avantis base data
+
+Code_Lookup[,"Expense.Code"] <- as.character(Code_Lookup[,"Expense.Code"])
+Code_Lookup[,"Activity.Code"] <- as.character(Code_Lookup[,"Activity.Code"])
+Code_Lookup[,"Account.Number"] <- as.character(Code_Lookup[,"Account.Number"])
+
+Code_Lookup <- data.frame(lapply(Code_Lookup,trimws), stringsAsFactors = FALSE)
+
+str(Code_Lookup)
+```
+
+
+```{r Merge_AvantisandGLTables}
+# Merge Avantis and GL Tables to pull in all relevant data   
+GL_Final <-  merge( GL_Transformed,Avantis_Transformed, 
+                                        by.x = c("account","department","expense_code", "SumOftrans_amt","posting_yr","posting_pd"),
+                                        by.y = c("Account.Number","Department","Expense.Code","Extended.line.amount_1","Year","Month"),all.x = TRUE)
+```
+
+```{r Prepare_BudgetData}
+# 1) Break apart F9 Budget data 
+Budget_Information_Transformed <- Budget_Information %>% 
+  separate("Account", c("Company_Code", "Account_Number", "Expense_Code", "Department", "Location", "Activity_Code","Center"), sep = "\\-", fill = "left")
+#2) Trim Whitespace
+Budget_Information_Transformed <- data.frame(lapply(Budget_Information_Transformed, trimws), stringsAsFactors = FALSE)
+```
+
+```{r Bind_GL&Budget}
+#Incorporate Budget Data
+GL_Final <- bind_rows(GL_Final, Budget_Information_Transformed)
+```
+
+```{r Break_Apart_Code_Lookup}
+#Break Apart Code Lookup to make merge for descriptions function
+Activity_Code_Lookup <- select(Code_Lookup, Activity.Code, Activity.Description)
+Expense_Code_Lookup <- select(Code_Lookup, Expense.Code, Expense.Code.Description, Expense.Code.Category)
+Account_Code_Lookup <- select(Code_Lookup, Account.Number, Account.Description)
+
+```
+
+```{r Merge_GL_Final_AccountLookups}
+#Merge GL_Final with Account, Expense, Activity Code Descriptions
+GL_Final <- merge(GL_Final, Activity_Code_Lookup,
+                  by.x = c("activity"),
+                  by.y = c("Activity.Code"), all.x = TRUE)
+```
+
+```{r}
+GL_Final <- merge(GL_Final, Expense_Code_Lookup,
+                  by.x = c("expense_code"),
+                  by.y = c("Expense.Code"), all.x = TRUE)
+```
+
+```{r}
+GL_Final <- merge(GL_Final, Account_Code_Lookup,
+                  by.x = c("account"),
+                  by.y = c("Account.Number"), all.x = TRUE)
+```
+
+```{r Replace_GL_NAs}
+#Replace GL_Final NAs with blank
+GL_Final[is.na(GL_Final)] <- ""
+```
+
+
+```{r Convert_SumofTranstoNumer, error=FALSE}
+#Convert Sum of Trans Amount to Numeric for analysis
+GL_Final[,"SumOftrans_amt"] <- as.numeric(GL_Final[,"SumOftrans_amt"])
+```
+
+
+
+
+
+
+
+
+
