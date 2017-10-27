@@ -21,7 +21,7 @@ Capstone_GL_Transformed <-read.csv(file.path(path,"Capstone_GL_Transformed.csv")
 Budget_Information <- read.csv(file.path(path,"Budget Information.csv"))
 ```
 
-
+#Load needed packages
 ```{r load_packages, include=FALSE}
 library(magrittr)
 library(formatR)
@@ -29,24 +29,22 @@ library(dplyr)
 library(tidyr)
 library(devtools)
 ```
-
+#Transform Avantis Data: 
+Step 1 pull apart GL data using tidyr: note cntrl-shift-m = pipe operator shortcut, place "" around column names!
 ```{r Transform_Avantis_Data}
-#Transform Avantis Data: Step 1 pull apart GL data using tidyr: note cntrl-shift-m = pipe operator shortcut, place "" around column names!
 Avantis_Transformed <- Capstone_Avantis_Transformed %>% 
   separate("G.L.Account.number", c("Company Id","Account Number", "Expense Code", "Department","Location","Activity Code","Center" ), sep = "\\-") %>% 
   #Transform Avantis Data: Step 2 pull apart date into month and year
-  separate("Processing.Date", c("Year","Month", "Day" ), sep = "\\-")
+  separate("Processing.Date", c("Month","Day", "Year" ), sep = "\\/")
 #Trim leading and trailing white space from columns
 Avantis_Transformed <- data.frame(lapply(Avantis_Transformed,trimws), stringsAsFactors = FALSE)
 
 #View Output  
 head(Avantis_Transformed,10)
 ```
-
+#Transform GL Data: 
+Step 2: break apart GL Description to identifiers - Segment: (INE or ISS, all others will remain whole), Recevable/Non Recevable/Cat Name (1000, 1001, 1010) or if issue catalog #, PO Number, Invoice Number/Warehouse Detail -  separate gl desc
 ```{r Transform_GL_Data}
-#Transform GL Data: Step 1: break apart GL Description to identifiers - Segment: (INE or ISS, all others will remain whole), Recevable/Non Recevable/Cat Name (1000, 1001, 1010) or if issue catalog #, PO Number, Invoice Number/Warehouse Detail -  separate gl desc
-#Note: may need to call as.numberic or as.character to pull values correctly
-
 GL_Transformed <- Capstone_GL_Transformed %>% 
   separate("descp", c("Segment","Recevable/Catalog Code", "PO Number", "Invoice Number/Warehouse Detail" ), sep = "\\-", fill = "left") 
 #Trim leading and trailing white space from columns
@@ -54,7 +52,7 @@ GL_Transformed <- data.frame(lapply(GL_Transformed,trimws), stringsAsFactors = F
 
 head(GL_Transformed,10)
 ```
-
+Test Vector Types 
 ```{r Test_Vector_Types, include=FALSE}
 #Test vector Types 
 is.numeric(GL_Transformed$account)
@@ -64,18 +62,17 @@ is.numeric(GL_Transformed$location)
 is.numeric(GL_Transformed$activity)
 is.numeric(GL_Transformed$SumOftrans_amt)
 ```
-```{r View_Data_Avantis_Tranformed}
-#View Data frame to ensure merge will funciton
+View Data frame to ensure merge will funciton
+```{r View_Data_Avantis_Tranformed,include=FALSE}
 head(Avantis_Transformed)
 ```
-
-```{r View_GL_Transformed, include=FALSE}
-#View Data frame to ensure merge will funciton
+View Data frame to ensure merge will funciton
+```{r View_GL_Transformed,include=FALSE}
 head(GL_Transformed)
 str(GL_Transformed)
 ```
 
-```{r Check_Vector_Types, include=FALSE}
+```{r Check_Vector_Types,include=FALSE}
 #check vector type
 typeof(GL_Transformed$account)
 typeof(Avantis_Transformed$Account.Number)
@@ -87,29 +84,48 @@ typeof(GL_Transformed$posting_yr)
 typeof(GL_Transformed$posting_pd)
 typeof(Avantis_Transformed$Month)
 ```
-
+Merge GL with Avantis Data
+```{r MergeGL&Avantis}
+GL_Final <-  merge( GL_Transformed,Avantis_Transformed, 
+                                        by.x = c("account","department","expense_code", "SumOftrans_amt","posting_yr","posting_pd"),
+                                        by.y = c("Account.Number","Department","Expense.Code","Extended.line.amount_1","Year","Month"),all.x = TRUE)
+```
+Break Apart Code Lookup to make merge for descriptions function
+```{r Break_Apart_Code_Lookup}
+Activity_Code_Lookup <- select(Code_Lookup, Activity.Code, Activity.Description)
+Expense_Code_Lookup <- select(Code_Lookup, Expense.Code, Expense.Code.Description, Expense.Code.Category)
+Account_Code_Lookup <- select(Code_Lookup, Account.Number, Account.Description)
+```
+Convert Account Code Lookups to characer for merge
 ```{r Load_Account_Lookup_ConvertAsCharacter}
-#Convert Account Code Lookups to characer for merge
-
-Code_Lookup <-read.csv(file.path(path,"Code Lookup.csv"), header = TRUE, stringsAsFactors = FALSE) #Avantis base data
+Code_Lookup <-read.csv(file.path(path,"Code Lookup.csv"), header = TRUE, stringsAsFactors = FALSE)
 
 Code_Lookup[,"Expense.Code"] <- as.character(Code_Lookup[,"Expense.Code"])
 Code_Lookup[,"Activity.Code"] <- as.character(Code_Lookup[,"Activity.Code"])
 Code_Lookup[,"Account.Number"] <- as.character(Code_Lookup[,"Account.Number"])
 
 Code_Lookup <- data.frame(lapply(Code_Lookup,trimws), stringsAsFactors = FALSE)
-
 str(Code_Lookup)
 ```
-
-
-```{r Merge_AvantisandGLTables}
-# Merge Avantis and GL Tables to pull in all relevant data   
-GL_Final <-  merge( GL_Transformed,Avantis_Transformed, 
-                                        by.x = c("account","department","expense_code", "SumOftrans_amt","posting_yr","posting_pd"),
-                                        by.y = c("Account.Number","Department","Expense.Code","Extended.line.amount_1","Year","Month"),all.x = TRUE)
+Merge GL_Final with Activity Code Descriptions
+```{r Merge_GL_Final_AccountLookups, error=FALSE}
+GL_Final <- merge(GL_Final, Activity_Code_Lookup,
+                  by.x = c("activity"),
+                  by.y = c("Activity.Code"), all.x = TRUE)
 ```
-
+Merge GL_Final with Expense Code Descriptions
+```{r}
+GL_Final <- merge(GL_Final, Expense_Code_Lookup,
+                  by.x = c("expense_code"),
+                  by.y = c("Expense.Code"), all.x = TRUE)
+```
+Merge GL_Final with Account Code Descriptions 
+```{r}
+GL_Final <- merge(GL_Final, Account_Code_Lookup,
+                  by.x = c("account"),
+                  by.y = c("Account.Number"), all.x = TRUE)
+```
+Prepare Budget data:
 ```{r Prepare_BudgetData}
 # 1) Break apart F9 Budget data 
 Budget_Information_Transformed <- Budget_Information %>% 
@@ -117,53 +133,81 @@ Budget_Information_Transformed <- Budget_Information %>%
 #2) Trim Whitespace
 Budget_Information_Transformed <- data.frame(lapply(Budget_Information_Transformed, trimws), stringsAsFactors = FALSE)
 ```
-
+Bind budget to gl data:
 ```{r Bind_GL&Budget}
-#Incorporate Budget Data
 GL_Final <- bind_rows(GL_Final, Budget_Information_Transformed)
 ```
-
-```{r Break_Apart_Code_Lookup}
-#Break Apart Code Lookup to make merge for descriptions function
-Activity_Code_Lookup <- select(Code_Lookup, Activity.Code, Activity.Description)
-Expense_Code_Lookup <- select(Code_Lookup, Expense.Code, Expense.Code.Description, Expense.Code.Category)
-Account_Code_Lookup <- select(Code_Lookup, Account.Number, Account.Description)
-
-```
-
-```{r Merge_GL_Final_AccountLookups}
-#Merge GL_Final with Account, Expense, Activity Code Descriptions
-GL_Final <- merge(GL_Final, Activity_Code_Lookup,
-                  by.x = c("activity"),
-                  by.y = c("Activity.Code"), all.x = TRUE)
-```
-
-```{r}
-GL_Final <- merge(GL_Final, Expense_Code_Lookup,
-                  by.x = c("expense_code"),
-                  by.y = c("Expense.Code"), all.x = TRUE)
-```
-
-```{r}
-GL_Final <- merge(GL_Final, Account_Code_Lookup,
-                  by.x = c("account"),
-                  by.y = c("Account.Number"), all.x = TRUE)
-```
-
-```{r Replace_GL_NAs}
-#Replace GL_Final NAs with blank
-GL_Final[is.na(GL_Final)] <- ""
-```
-
-
+Convert SumofTrans to numeric
 ```{r Convert_SumofTranstoNumer, error=FALSE}
 #Convert Sum of Trans Amount to Numeric for analysis
 GL_Final[,"SumOftrans_amt"] <- as.numeric(GL_Final[,"SumOftrans_amt"])
 ```
+Convert na's to blank
+```{r, nastoblank}
+GL_Final[is.na(GL_Final)] <- ""
+```
 
+Incorporate and clean up Budget Data in GL 
+```{r Incorporate_BudgetData}
+#Incorporate Budget into base data 
+GL_Final$account <- ifelse(GL_Final$account == "", GL_Final$Account_Number, GL_Final$account)
+GL_Final$expense_code <- ifelse(GL_Final$expense_code == "", GL_Final$Expense_Code, GL_Final$expense_code)
+GL_Final$activity <- ifelse(GL_Final$activity == "", GL_Final$Activity_Code, GL_Final$activity)
+GL_Final$department <- ifelse(GL_Final$department == "", GL_Final$Department, GL_Final$department)
+GL_Final$SumOftrans_amt <- ifelse(GL_Final$SumOftrans_amt == "", GL_Final$Amount, GL_Final$SumOftrans_amt)
+GL_Final$posting_yr <- ifelse(GL_Final$posting_yr == "", GL_Final$Years, GL_Final$posting_yr)
+GL_Final$posting_pd <- ifelse(GL_Final$posting_pd == "", GL_Final$Period, GL_Final$posting_pd) 
+GL_Final$location <- ifelse(GL_Final$location == "", GL_Final$Location, GL_Final$location)
+GL_Final$Types <- ifelse(GL_Final$Types == "","Actual",GL_Final$Types)
+```
+Consolidate data & remove unneeded columns
+```{r Consolidate_data}
+GL_Final$Years  = NULL
+GL_Final$Currencies = NULL
+GL_Final$Company_Code = NULL
+GL_Final$Account_Number = NULL
+GL_Final$Expense_Code = NULL
+GL_Final$Department= NULL
+GL_Final$Activity_Code = NULL
+GL_Final$Description = NULL
+GL_Final$Period = NULL
+GL_Final$Amount = NULL
+GL_Final$Companies = NULL
 
+head(GL_Final)
+```
+Replace GL_Final NAs with blank
+```{r Replace_GL_NAs}
+GL_Final[is.na(GL_Final)] <- ""
+```
 
+View Stucture:
+```{r}
+str(GL_Final)
+```
+Change posting_period  and account number to numeric for season classification and account designation
+```{r, post_per_numeric}
+GL_Final[,"posting_pd"] <- as.numeric(GL_Final[,"posting_pd"])
+GL_Final[,"account"] <- as.numeric(GL_Final[,"account"])
+```
+View Head
+```{r,head}
+head(GL_Final)
+```
 
+Add Capital or O&M designation GL_Final
+```{r Add_AccountDesignations}
+GL_Final$Designation <- ""
+GL_Final$Designation <- ifelse(GL_Final$account < 140000,"Capital" ," O&M")
+```
+
+Incorporate season into data for Time Series Analysis: 10/25 4:27 only returning spring
+```{r, season,error=FALSE}
+GL_Final$Season <- ifelse(GL_Final$posting_pd == c(12,1,2), "Winter",
+                    ifelse(GL_Final$posting_pd == c(3,4,5),"Spring",
+                    ifelse(GL_Final$posting_pd == c(6,7,8), "Summer",
+                    ifelse(GL_Final$posting_pd == c(9,10,11),"fall",""))))
+```
 
 
 
