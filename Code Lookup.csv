@@ -1,0 +1,1536 @@
+Activity Code,Activity Description,Expense Code ,Expense Code Description,Expense Code Category ,Account Number ,Account Description 
+1002,Blanket-Furniture and Equipment,1,,Revenues ,101101,Production Plant
+1003,Blanket-Communication Equipment,2,Municipalities     ,Revenues ,101102,Production Plant Leased 
+1004,Blanket-General Equipment,3,Surplus Sales - Firm  ,Revenues ,101103,Production Plant Land 
+1005,Blanket-Transportation Equipment,4,Surplus Sales - Non-Firm  ,Revenues ,101201,Transmission Plant
+1006,Blanket-Computer Equipment,5,Interest and Other Income  ,Revenues ,101202,Transmission Plant Leased
+1007,Blanket-Laboratory Equipment,6,Wheeling Income    ,Revenues ,101203,Transmission Plant Land
+1010,Yampa Work Orders,7,Other Income    ,Revenues ,101301,General General Plant
+1011,Rawhide Roof Replacement,8,,Revenues ,101303,General General Land
+1012,Rawhide Wind Power Project,9,,Revenues ,106101,UnclassifiedPlant-Production
+1013,Data Acquisition Replacement,10,,Personal Services (Salaries/Benefits),106401,UnclassifiedPlant-Transmission
+1014,Steam Inert Sys Improvement,11,,Personal Services (Salaries/Benefits),106801,UnclassifiedPlant-General
+1015,Bottom Ash Control Sys Replacement,12,Regular Wages    ,Personal Services (Salaries/Benefits),107101,Work In Progress –ProductionPlant
+1016,Fly Ash Control Sys Replacement,13,Overtime Wages    ,Personal Services (Salaries/Benefits),107201,Work In Progress –TransmissionPlant
+1017,Demineralization Sys Replacement,14,Bonus Pay (Gainshare)   ,Personal Services (Salaries/Benefits),107301,Work In Progress –GeneralPlant
+1018,Svc Water Control Sys Replacement,15,,Personal Services (Salaries/Benefits),108101,Accumulated Depreciation –  Plant in   
+1019,CEMS - Data Acquisition,16,,Personal Services (Salaries/Benefits),108102,Accumulated Depreciation –  Capitalized Lease Service  
+1020,Scrubber Recycle Ashfee,17,,Personal Services (Salaries/Benefits),108103,Accumulated Depreciation –  Miscellaneous Revenue   
+1021,Toyo Sump Pump,18,,Personal Services (Salaries/Benefits),108201,Retirement Work in  Progress    
+1022,Turbine Recorder Replacement,19,,Personal Services (Salaries/Benefits),118101,Other Utility Plant      
+1023,Soot Blower Process Upgrade,20,Pension Contribution – Defined Contribution ,Personal Services (Salaries/Benefits),119101,Accumulated Depreciation –  Other Utility Plant  
+1024,Demineralizer Analyzers,21,Pension Contribution – Defined Benefit ,Personal Services (Salaries/Benefits),124104,Other Investments –  General Fund   
+1025,Security Upgrade-Rawhide,22,Social Security    ,Personal Services (Salaries/Benefits),124105,Market Value Adjustment  – General Fund  
+1026,Baghouse Control System,23,Long-Term Disability    ,Personal Services (Salaries/Benefits),124202,Market Value Adjustment  – Rate Stabilization  
+1027,Reclaim Water Chem Fd T,24,Medical and Dental Insurance  ,Personal Services (Salaries/Benefits),124203,Other Investments –  Reserve and Contingency  
+1028,Portable Flow Meter,25,Recruiting Expenses    ,Personal Services (Salaries/Benefits),124204,Market Value Adjustment  – Reserve and Fund FundFund
+1029,Feed Tank Level Msrmnt,26,,Personal Services (Salaries/Benefits),124205,Other Investments –  Rate Stabilization Fund Fund 
+1030,Mill Co Monitor,27,Life Insurance    ,Personal Services (Salaries/Benefits),124207,Other Investments –  Debt Management Reserve Fund 
+1031,Vibration Monitor Replacement,28,Accidental Death and Dismemberment  ,Personal Services (Salaries/Benefits),124208,Market Value Adjustment  – Debt Management Contingency Fund 
+1032,Turbine Upgrade,29,Workers Compensation    ,Personal Services (Salaries/Benefits),124221,Other Investments –  Generation Reserve Fund  
+1033,Inlet S02 Analyzers,30,Unemployment Compensation    ,Personal Services (Salaries/Benefits),124222,Market Value Adjustment  – Generation Reserve Fund 
+1034,Stack & Inlet Analyzer,31,Salary and Pension Services  ,Personal Services (Salaries/Benefits),124223,Other Investments –  Series HH Project Reserve 
+1035,Undrgrd Storage Tank Upgrade,32,,Personal Services (Salaries/Benefits),124224,Market Value Adjustment  – Series HH Fund FundFund
+1036,Fabric Fltr Hopper Leve,33,,Personal Services (Salaries/Benefits),128101,Deferred Compensation Benefit  - ICMA   
+1037,Washbay Station/Hvy Eqmpt,34,,Personal Services (Salaries/Benefits),128102,Other Special Funds  - Benefit Plan Fund 
+1038,Water Fill Station,35,,Personal Services (Salaries/Benefits),128103,Deferred Compensation Benefit  - PEBSCO   
+1039,Hvac,36,,Personal Services (Salaries/Benefits),128104,Other Special Funds  - Flexible Spending Account 
+1040,Network Rawhide PCs,37,,Personal Services (Salaries/Benefits),128105,Deferred Compensation Benefit  - Money Purchase Plan 
+1041,Door 212 Enclosure,38,Benefits Allocation    ,Personal Services (Salaries/Benefits),131101,Cash – Revenue  Fund    
+1042,Rh Control Room Modification,39,Stores Allocation    ,Personal Services (Salaries/Benefits),131103,Cash – Payroll  Fund    
+1043,Diesel Gen Fuel Transfer P,40,,Materials and Expenses,131104,Cash – General  Fund    
+1044,Over/Under Frequency Pr,41,Office Expenses    ,Materials and Expenses,131106,Cash – Petty  Cash Fund   
+1045,Closed Cooling Water Ch,42,Health and Safety Expenses  ,Materials and Expenses,134203,Other Special Deposits  – Reserve and ContingencyFund FundFund
+1046,Fabric Filter Sys/Baghouse,43,Office Furniture and Equipment (Minor) ,Materials and Expenses,134205,Other Special Deposits  – Rate Stabilization Fund 
+1047,Sodium Hypochlorite Sys,44,,Materials and Expenses,134207,Other Special Deposits  – Debt Management ReserveFund FundFund
+1048,Generator Hydrogen Dewp,45,Local Business Expenses   ,Materials and Expenses,134219,Other Special Deposits  – Bond Service Fund/Series EE 
+1049,Lake Aeration Diffusers,46,Postage and Deliveries   ,Materials and Expenses,134221,Other Special Deposits  – Generation Reserve Fund 
+1050,Sample Panel Recorder,47,Operations and Maintenance Materials and Supplies,Materials and Expenses,134223,Other Special Deposits  – Construction Account Fund 
+1051,Atomizer Hoist Platform,48,Coal     ,Materials and Expenses,134224,Other Special Deposits  – Bond Reserve Fund/Series GG
+1052,Laboratory Equipment Upgrade,49,Oil     ,Materials and Expenses,134225,Other Special Deposits  – Series HH ProjectFund FundFund
+1053,Rochester Events Sequence,50,Natural Gas    ,Materials and Expenses,134226,Other Special Deposits  – Bond Reserve Fund/Series HH
+1054,Turbine Supervisory System,51,Gasoline and Diesel   ,Materials and Expenses,136101,Temporary Cash Investment  - Revenue Fund  
+1055,Air Compressor Replacement,52,"Tools, Shop and Garage Equipment (Minor)",Materials and Expenses,136102,Market Value Adjustment  - Revenue Fund  
+1056,Throttle Valve Modification,53,Purchased Power    ,Materials and Expenses,136104,Temporary Cash Investment  - General Fund  
+1057,Stock MPC Feeder Conversion,54,Yampa Operating Agent Expenses  ,Materials and Expenses,136105,Market Value Adjustment  - General Fund  
+1058,Sodium Analyzer,55,Computer Equipment (Minor)   ,Materials and Expenses,136106,Temporary Cash Investment  – Colotrust Revenue Fund 
+1059,Trolley Beam Design,56,Environmental Expenses    ,Materials and Expenses,136110,Temporary Cash Investment  – Solomon Smith BarneyMoney MoneyMoney
+1060,Conveyor Belt Replacement,57,Wheeling Expense    ,Materials and Expenses,136203,Temporary Cash Investment  - Reserve and ContingencyFund FundFund
+1061,Y2K Project,58,Outage Accrual    ,Materials and Expenses,136205,Temporary Cash Investment  - Rate Stabilization Fund 
+1062,Metal Detector Replacement,59,,Materials and Expenses,136207,Temporary Cash Investment  - Debt Management ReserveFund FundFund
+1063,ACSS Transfer Building Door,60,,Contractual Services,136211,Temporary Cash Investment  – Debt Management ReserveFund FundFund
+1064,Rail Car Repair Facility,61,Professional Services    ,Contractual Services,136215,Market Value Adjustment  - Debt Management ReserveFund FundFund
+1065,DFR Buss 101 102,62,Contracted Services    ,Contractual Services,136220,Temporary Cash Investment  – Bond Service Fund/Series EE
+1066,Steam Line Insulation Blankets,63,Corporate Insurance    ,Contractual Services,136221,Market Value Adjustment  – Bond Service Fund/Series EE
+1067,Generator Flux Probe,64,Travel Expenses    ,Contractual Services,136222,Temporary Cash Investment  – Generation Reserve Fund 
+1068,RCD Door 213 Upgrade,65,Training Registration and Materials  ,Contractual Services,136223,Temporary Cash Investment  – Construction Account Fund 
+1069,Chlorine Analyzers,66,Telephone Expenses    ,Contractual Services,136224,Market Value Adjustment  – Construction Account Fund 
+1070,Work Platforms,67,Utilities     ,Contractual Services,136228,Temporary Cash Investment  – Bond Service Fund/Series GG
+1081,Install New Watt Hour Meters,68,"Dues, Memberships and Fees  ",Contractual Services,136229,Market Value Adjustment  – Bond Service Fund/Series GG 
+1082,Boiler Ammonia Analyzer,69,,Contractual Services,136230,Temporary Cash Investment  – Bond Service Funds/Series HH
+1083,Concrete Heavy Eqpmt Traffic Area,70,Trustee Fees    ,Contractual Services,136231,Temporary Cash Investment  – Series HH ProjectFund FundFund
+1084,Condensate Makeup Line,71,,Contractual Services,136232,Market Value Adjustment  – Series HH ProjectFund FundFund
+1085,Current IDs for Atomizer Moters,72,Leases and Rents   ,Contractual Services,136233,Market Value Adjustment  – Bond Service Funds/Series SeriesSeries
+1086,Dumper Control Upgrade,73,Economic Development    ,Contractual Services,142101,Customer Accounts Receivable  – Fort Collins  
+1087,Environmental Data Acq Sys Sftw Upg,74,Fiscal Impact Payment – Moffat County,Contractual Services,142102,Customer Accounts Receivable  – Longmont   
+1089,Hazard & Indust Waste Sat Coll Bldg,75,Demand Side Management Incentives  ,Contractual Services,142103,Customer Accounts Receivable  – Loveland   
+1090,Machine Shop Equip,76,,Contractual Services,142104,Customer Accounts Receivable  – Estes Park  
+1091,PRS Allen Bradley PLC Upgrade,77,,Contractual Services,142201,Customer Accounts Receivable  – Public Service Companyof ofof
+1092,Rail Car Purchase,78,,Contractual Services,142203,Customer Accounts Receivable  – Other Surplus Sales 
+1094,Real Time Performance Monitor,79,,Contractual Services,142301,Customer Accounts Receivable  – CAMU   
+1095,Recycle Bin Leval Sensing System,80,,Fixed Expenses,142401,Customer Accounts Receivable  – Distribution Maintenance  
+1096,Secondary Superheater Tube Modif,81,Interest Expense    ,Fixed Expenses,142402,Customer Accounts Receivable  – CIS   
+1097,Sootblowing Upgrade,82,Principal Payments    ,Fixed Expenses,142403,Customer Accounts Receivable  – Fiber   
+1098,Stack Opacity Monitor Replacement,83,Other Financing Expenses   ,Fixed Expenses,142404,Customer Accounts Receivable  – Other   
+1099,Water Mgmt Microfiltration System,84,Special Deposits    ,Fixed Expenses,142405,Customer Accounts Receivable  – Tower Leases  
+1100,Sulphur Dioxide Monitor,85,,Fixed Expenses,143101,Other Accounts Receivable  – General   
+1101,1999 Wind Generation Facilities,86,,Fixed Expenses,143102,Other Accounts Receivable  – Employee   
+1102,Replace Fuel Air Damper Actuator,87,,Fixed Expenses,143103,Other Accounts Receivable  – Power Exchanges  
+1103,Peaking Resource Unit A,88,Depreciation Expense    ,Fixed Expenses,151101,Fuel Stock –  Coal    
+1104,Natural Gas Pipeline,89,Amortization Expense    ,Fixed Expenses,151102,Fuel Stock –  Oil    
+1105,Atomizer Wheel Protection Water Flow Transmitter,90,Capitalized Interest Expense   ,Capital Additions,154101,Plant Inventory –  Limestone YAMPA   
+1106,PRS Sludge Pumps,91,,Capital Additions,154102,Plant Inventory –  Materials and Supplies  
+1107,Air Heater Sector Plate Control,92,,Capital Additions,154103,Plant Inventory –  Clearing Account (Received NotInvoiced) Invoiced)Invoiced)
+1108,Dumper Clamp Hydraulic Controls,93,,Capital Additions,154104,Outage Inventory       
+1109,Jordan Amplifiers,94,Capital Materials and Supplies  ,Capital Additions,163101,Stores Expense –  Undistributed    
+1110,Chemical Storage Tank Replacements,95,Capital Contracted Services   ,Capital Additions,163102,Stores – Clearing      
+1111,Allen Bradley Programming Software Upgrade,96,,Capital Additions,165101,Prepayments – Property  Insurance    
+1112,Demineralizer Silica Analyzer,97,,Capital Additions,165102,Prepayments – Windy  Gap Assessment   
+1114,Cathodic Protection System - Underground Pipe,98,Capital Reimbursements    ,Capital Additions,165103,Prepayments – Other      
+1115,Dual Headed Workstation for SDA,99,Capital Transfers    ,Capital Additions,165104,Prepayments – Computer  Maintenance    
+1116,Lime Slurry Density Meters,,,,165201,Prepayments – Natural  Gas Imbalance   
+1118,Paperless Records/Control Room,,,,165202,Prepayments – Pension  Costs    
+1119,Foxboro Environmental Data Acquisition Sys Software0.00,,,,172201,Notes Receivable –  Western States Power CorporationLoan LoanLoan
+1120,Rotary Car Dumper PLC Upgrade,,,,172202,Notes Receivable –  Trapper Mine   
+1121,Network Expansion from Scrubber to Water Treatment,,,,173101,Accrued Utility Revenues  – Renewables   
+1122,Ammonia Feed System Upgrade,,,,174101,Accrued Interest Receivable  – Revenue Fund  
+1123,Rawhide Remodel,,,,174104,Accrued Interest Receivable  – General Fund  
+1124,Wind Project - Phase III,,,,174105,Accrued Interest Receivable  – General Fund/Long-Term  
+1125,Rawhide Water Lab Annunciator System,,,,174119,Accrued Interest Receivable  – Thompson School DistrictLease LeaseLease
+1126,Upgrade Plant Instrumentation,,,,174120,Accrued Interest Receivable  – Western States PowerCorporation CorporationCorporation
+1127,Whse #2 Air Conditioner Replacement,,,,174121,Accrued Interest Receivable  – Trapper Mine  
+1128,LT/SH & Economizer Assembly Change,,,,174203,Accrued Interest Receivable  – Reserve and ContingencyFund FundFund
+1129,Inverter & Station Battery Replacement,,,,174205,Accrued Interest Receivable  – Rate Stabilization Fund 
+1130,Rawhide Base Radio Replacement,,,,174207,Accrued Interest Receivable  – Debt Management ReserveFund FundFund
+1131,Flame Scanners,,,,174218,Accrued Interest Receivable  – Resource and ReserveFund FundFund
+1132,Boiler Cleaning Manager,,,,174219,Accrued Interest Receivable  – Bond Service Fund/SeriesEE EEEE
+1133,Water Management PH Meter Replacement,,,,174221,Accrued Interest Receivable  – Generation Reserve Fund 
+1134,Boiler Feed Pump Motor Rotor Replacement,,,,174223,Accrued Interest Receivable  – Construction Account Fund 
+1135,Air Quality Control Improvements,,,,174224,Accrued Interest Receivable  – Bond Service Fund/SeriesGG GGGG
+1136,Belt Scale Test Chain Hoist,,,,174225,Accrued Interest Receivable  – Bond Service Fund/SeriesHH HHHH
+1138,Digital Electrical Hydraulic (DEH) Control System U0.00,,,,174226,Accrued Interest Receivable  – Series HH ProjectFund FundFund
+1139,Diesel Generator Protective Relay Replacement,,,,181112,Unamortized Debt Expense  – Series EE Refunding RefundingRefunding
+1140,Flame Scanning and Safety System Upgrade,,,,181113,Unamortized Debt Expense  – Series EE Reimburse ReimburseReimburse
+1141,Kitchen & Restroom Remodel,,,,181115,Unamortized Debt Expense  – Series GG Bonds 
+1142,Lime Feed Equipment Upgrade,,,,181116,Unamortized Debt Expense  – Series HH Bonds 
+1143,Montgomery Elevator Safety Edge,,,,183101,Preliminary Production Projects      
+1144,Potable Water Particle Counter Addition,,,,183201,Preliminary Transmission Projects      
+1145,Polymer Feeder Upgrade,,,,183301,Preliminary General Projects      
+1146,Rawhide Pump Station Annunciator,,,,184101,Clearing Account –  Interbank Transfers   
+1147,Spray Dryer Absorber Inlet CO Monitor,,,,184102,Clearing Account –  Special Fund Transfers  
+1148,Turbine Tool Trailer,,,,184103,Clearing Account –  Rate Stabilization Transfers  
+1150,Rawhide Physical Security,,,,184104,Clearing Account –  Pension and Benefits  
+1151,Inverter Battery & Charge System Replacement,,,,184105,Clearing Account –  Payroll    
+1152,Slaking Water Heater Replacement,,,,184106,Clearing Account –  Bond Proceeds   
+1153,Generator Through Bolt Project,,,,184107,Clearing Account –  Group Term Life  
+1154,Bentley Nevada Vibration Monitor,,,,184108,Clearing Account –  Visa Charges   
+1155,Peaking Resource Unit B,,,,184109,Clearing Account –  CIP Charges   
+1156,Peaking Resource Unit C,,,,184110,Clearing Account –  Wind Turbine Principal  
+1157,Replace Aux Boiler Level Switch,,,,186102,Deferred Pension Expense      
+1158,Economizer Outlet Water Sample,,,,186107,Deferred Trapper Post-Mining  Reclamation Costs   
+1159,Boiler Feed Pump 101 Motor,,,,189112,Unamortized Debt Loss  – Series EE BondsRefunding RefundingRefunding
+1160,2001 Rail Car Purchase,,,,189113,Unamortized Debt Loss  – Series EE BondsReimburse ReimburseReimburse
+1161,Diesel Generator Exhaust Pipe,,,,189115,Unamortized Debt Loss  – Series GG Bonds 
+1162,Boiler Feed Pump 102 Motor,,,,211101,Miscellaneous Paid in Capital
+1163,A H Sootblower Safety Valve,,,,216101,Accumulated Net Revenues      
+1164,Bentley Foxboro Interface Project,,,,216102,Unrealized Holding –  Gain/Loss    
+1166,Chemical Feed Line from Railroad,,,,216103,Distributed Accumulated Net  Revenues – Longmont  
+1167,Lighting in Warehouse 2,,,,216104,Distributed Accumulated Net  Revenues – Fort Collins 
+1169,Wind Project Phase IV,,,,216105,Distributed Accumulated Net  Revenues – Loveland  
+1171,Condensate Pump Motor Replacement,,,,216106,Distributed Accumulated Net  Revenues – Estes Park 
+1172,Dust Suppression Application System,,,,221112,Bonds Outstanding –  Series EE Refunding  
+1173,Force Draft Fan Motor Replacement,,,,221113,Bonds Outstanding –  Series EE Reimburse  
+1174,Foxboro Control System Workstation Upgrades,,,,221115,Bonds Outstanding –  Series GG   
+1175,Generator Hydrogen Purity Motor,,,,221116,Bonds Outstanding –  Series HH   
+1176,Generator Protective Relaying,,,,224101,Other Long-Term Debt – Loveland Lease
+1177,Generator Retaining Ring Modification,,,,224103,Other Long-Term Debt – Windy Gap
+1179,Jordan Amplifier and Damper Drive Replacement,,,,225102,Unamortized Premium –  Series EE Bonds Refunding 
+1180,Meteorological Site Upgrade,,,,225103,Unamortized Premium –  Series EE Bonds Reimburse 
+1181,Portabel Electrical Distribution Center,,,,225105,Unamortized Premium –  Series GG Bonds  
+1182,Primary Air Fan Motor Replacement,,,,225106,Unamortized Premium –  Series HH Bonds  
+1183,Replace Bottom Ash Grinders,,,,228101,Deferred Compensation Liability  – ICMA   
+1186,Pipeline Relocation at Taft Hill Bridge,,,,228103,Deferred Compensation Liability  – PEBSCO   
+1187,Voltage Regulator Replacement,,,,228104,Deferred Compensation Liability  – Money Purchase Plan– ––
+1188,Update Ash Silo Dry Unloading System,,,,228201,Deferred Long-Term Liability  – Trapper G.E. RoyaltyPayable PayablePayable
+1189,Potable Water TOC Analyzer,,,,228202,Deferred Long-Term Liability  – Trapper Post-Mining ReclamationPayable PayablePayable
+1190,Water Cannon Project,,,,228203,Deferred Long-Term Liability  – Rawhide Solid WasteFacilities FacilitiesFacilities
+1193,Watt Hour Meters,,,,228204,Deferred Long-Term Liability  – Long Term AccruedOutage OutageOutage
+1194,Boiler Building Fire Panel Replacement,,,,228205,Deferred Long-Term Liability  – Wind Turbine Reimbursement 
+1195,Bottom Ash Switch and Indicator Light Replacement,,,,228206,Deferred Long-Term Liability  – Employee Leave Payable 
+1196,Chlorine Gas Cylinder Shut Off Valve,,,,232101,Accounts Payable –  Purchased Power   
+1197,Control Building Condenser Unit Replacement,,,,232102,Accounts Payable –  Power Exchanges   
+1198,Demineralizer Water Quality Monitoring,,,,232103,Accounts Payable –  Natural Gas   
+1199,Dumper Haulage Motor Control Upgrade,,,,232201,Accounts Payable –  General Fund   
+1200,Electric Hydraulic Fluid Conditioning System,,,,232202,Accounts Payable –  Revenue Fund   
+1201,Halon Fire System Replacement,,,,232203,Accounts Payable –  Receipts Not Invoiced  
+1202,Honeywell Loveland Calibrator,,,,232204,Accounts Payable –  Unclaimed Property   
+1205,Building Walkway from SDA to Fabric Filter,,,,232205,Accounts Payable –  Coal Purchases   
+1207,Security Gates,,,,232206,Accounts Payable –  Burlington Northern Coal Transportation 
+1208,Start Up Hydrazine Ammonia Chemical Feed Line,,,,232207,Accounts Payable –  Windy Gap   
+1210,Warehouse No 1 Remodel,,,,232301,Accounts Payable –  Employee Withholdings – UnitedWay WayWay
+1211,Warehouse No 3 Remodel,,,,232302,Accounts Payable –  Employee Withholdings – ICMA 
+1212,Microwave Communication System,,,,232303,Accounts Payable –  Employee Withholdings – PRPEA 
+1213,Acrylate (PAA) Pump Skid,,,,232307,Accounts Payable –  Employee Withholdings – SavingsBonds BondsBonds
+1214,Potable Water Filter Underdrain & Backwash Valve Cn0.00,,,,232308,Accounts Payable –  Employee Withholdings – WageAssignment AssignmentAssignment
+1215,Peaking Resource Unit D,,,,232310,Accounts Payable –  Employee Withholdings – DependentCare CareCare
+1216,Rawhide Landscaping Project,,,,232311,Accounts Payable –  Employee Withholdings – PEBSCO 
+1217,ERT Training Building,,,,232312,Accounts Payable –  Employer Contribution – HealthSavings SavingsSavings
+1218,Rawhide Lighting Retrofit,,,,232313,Accounts Payable –  Employee Withholdings – HealthSavings SavingsSavings
+1219,Admin Building Condensing Units,,,,232314,Accounts Payable –  Employee Withholdings – MoneyPurchase PurchasePurchase
+1220,Safety Office Remodel,,,,232316,Accounts Payable –  Employee Withholdings – Commute 
+1223,Control Room Workstation Changeout,,,,232317,Accounts Payable –  Employee Withholdings – LifeInsurance InsuranceInsurance
+1224,Control System for Condenser Cleaning,,,,232319,Accounts Payable –  Employee Withholdings – CellPhone PhonePhone
+1226,Emmissions Compliance (Nox),,,,232332,Accounts Payable –  Employee Withholdings – FlexSpending SpendingSpending
+1227,Fencing in Pasture 105,,,,232333,Accounts Payable –  Employee Withholdings – FlexSpending SpendingSpending
+1228,Foxboro Spec 200 Analog Control Replacement,,,,232334,Accounts Payable –  Employee Withholdings – FlexSpending SpendingSpending
+1229,Generator Protective Relays,,,,232335,Accounts Payable –  Employee Withholdings – FlexSpending SpendingSpending
+1230,ITT Gould on 4160 Bus,,,,232340,Accounts Payable –  Defined Contribution – MandatoryEmployee EmployeeEmployee
+1231,LP Turbine Modernization,,,,232341,Accounts Payable –  Defined Contribution – EmployerMatch MatchMatch
+1232,MS and MRH Outlet Links Replacement,,,,232342,Accounts Payable –  Defined Contribution – EmployerMatch MatchMatch
+1233,Rawhide Unit D Step-Up Transformer,,,,232343,Accounts Payable –  Defined Contribution – EmployeeContribution ContributionContribution
+1234,Recycle Pressure Feed System Replacement,,,,237113,Accrued Interest –  Series EE Bonds  
+1235,Rehabilitation Station,,,,237115,Accrued Interest –  Series GG Bonds  
+1236,Sample Analyzer Replacement Water Lab,,,,237116,Accrued Interest –  Series HH Bonds  
+1237,Voltage Regulator Replacement,,,,237120,Accrued Interest –  Wind Turbine Reimbursement  
+1238,RCD Hydraulic Project,,,,241101,Tax Collections Payable  – FICA/Employee   
+1239,Wind Turbine SCADA Control,,,,241102,Tax Collections Payable  – FICA/Employer   
+1240,Warehouse 2 Remodel,,,,241103,Tax Collections Payable  – FIT   
+1241,Time Entry System,,,,241104,Tax Collections Payable  – SIT   
+1242,Rawhide Telephone Switch,,,,241105,Tax Collections Payable  – SALES   
+1243,Control System Security,,,,241106,Tax Collections Payable  – Other State Taxes 
+1244,Gaitronics Upgrade,,,,242102,Current and Accrued  Liability – Net PayrollPayable PayablePayable
+1245,OSI PI Expansion,,,,242103,Current and Accrued  Liability – Employee VacationPayable PayablePayable
+1246,Ash Reclaim Sulfuric Acid Tank Replacement,,,,242104,Current and Accrued  Liability – Employee SickLeave LeaveLeave
+1247,Real Time Performance Monitor,,,,242105,Current and Accrued  Liability – Non-Exempt CTOPayable PayablePayable
+1248,Circulating Water Pump Motor,,,,242106,Current and Accrued  Liability – Employee IncentivePayable PayablePayable
+1249,SolarBee Circulators,,,,242107,Current and Accrued  Liability – Employee HolidayLeave LeaveLeave
+1250,Dumper Control Upgrade,,,,242201,Retainage – General      
+1251,Fiber Optic Generator Monitor,,,,242202,Current Portion of  Wind Turbine Reimbursement  
+1252,Fire System Piping Replacement,,,,242301,Current Accrued Outage  Liability    
+1253,Horsetooth Fresh Water Supply,,,,242302,Current Deferred Gain  on Sale of SO2Allowances AllowancesAllowances
+1254,ID Fan Motor,,,,242402,Current Maturity –  Series EE Bonds Refunding 
+1255,Jordan Drive Replacement,,,,242403,Current Maturity –  Series EE Bonds Reimburse 
+1257,Rawhide Control Room Unit 1 Controls Training Simul0.00,,,,242405,Current Maturity –  Series GG Bonds  
+1259,Roof Replacement at Rawhide,,,,242406,Current Maturity –  Series HH Bonds  
+1260,Station Battery Chargers,,,,243101,Current Capitalized Lease  Obligation    
+1262,Fire Training Tower Apron,,,,253101,Other Deferred Credits  – Miscellaneous   
+1263,Windbox Damper Drives,,,,254101,Deferred Gains from  Disposition of Allowances  
+1264,SDA Improvement Project,,,,403101,Depreciation Expense       
+1265,Recycle Ash Broken Bag Monitor,,,,408101,Taxes Other Than  Income Tax FICA  
+1266,Upgrade CEMS Cabinets,,,,408102,FICA Tax –  Administration and General  
+1267,Resurface Fire Training Grounds,,,,408111,FICA Tax –  Administration and General –Training TrainingTraining
+1268,Broken Bag Detectors on Large Emission Source Dust,,,,411800,Gains from Disposition  of SO2 Allowances  
+1270,Replace Display Controller Unit for Flue Gas Flow M0.00,,,,414101,Other Utility Operating  Income    
+1271,Vibration Monitoring,,,,417101,Non-Utility Revenue and  Expense    
+1272,Bison Working Facility,,,,417102,Other Revenue –  REPI Credit   
+1273,Air Heater Soot Blower Replacement,,,,417201,Non-Utility Operations –  Safety Projects   
+1274,Soldier Canyon Pump Station Security,,,,417202,Non-Utility Operations –  Other Projects   
+1275,Rawhide Pump Station Security,,,,419101,Interest and Dividend  Income – Revenue Fund 
+1276,Silo Reinforcement,,,,419103,Interest and Dividend  Income – Payroll Fund 
+1277,Fiber Install Rawhide 3rd Floor,,,,419104,Interest and Dividend  Income – General Fund 
+1279,SCBA Air Compressor Replacement,,,,419111,Interest and Dividend  Income – Tri-State OperatingAgent AgentAgent
+1280,Diesel Engine for Emergency Fire Pump,,,,419112,Interest and Dividend  Income – Trapper MineDividends DividendsDividends
+1281,Front Gate Fiber Optic Relocation,,,,419113,Interest and Dividend  Income – Colotrust  
+1282,High  & Low Pressure Compressor End Replacement,,,,419120,Interest and Dividend  Income – Western StatesPower PowerPower
+1283,Auxiliary Boiler Controls,,,,419121,Interest and Dividend  Income – Trapper Mine 
+1284,Chimney Platform Fall Protection,,,,419203,Interest and Dividend  Income – Reserve andContingency ContingencyContingency
+1286,Coal Mill Motor,,,,419205,Interest and Dividend  Income – Rate StabilizationFund FundFund
+1287,Filter Screens for CT Inlet Plenums,,,,419207,Interest and Dividend  Income – Debt ManagementReserve ReserveReserve
+1288,HP/IP  Turbine,,,,419220,Interest and Dividend  Income – Bond ServiceFund/Series Fund/SeriesFund/Series
+1289,Real Time LOI Monitoring,,,,419223,Interest and Dividend  Income – Construction AccountFund FundFund
+1290,NERC Generator Owner/Operator Security Upgrades,,,,419224,Interest and Dividend  Income – Bond ServiceFund/Series Fund/SeriesFund/Series
+1291,Rawhide Relay Room Refurbishment,,,,419225,Interest and Dividend  Income – Bond ServiceFund/Series Fund/SeriesFund/Series
+1292,Audio/Visual Upgrades at Rawhide,,,,419226,Interest and Dividend  Income – Bond ProjectFund/Series Fund/SeriesFund/Series
+1293,Rawhide Cabling,,,,419403,Market Value Adjustment  – Reserve and ContingencyFund FundFund
+1294,SDA Elevator Rebuild,,,,419404,Market Value Adjustment  – General Fund  
+1295,Coal Yard Ship Overhead Door,,,,419405,Market Value Adjustment  – Rate Stabilization Fund 
+1296,Mercury Monitoring CEMS (Unit 101),,,,419407,Market Value Adjustment  – Debt Management ReserveFund FundFund
+1297,CT's Data Acquisition & Handling System (DAHS) Upgr0.00,,,,419420,Market Value Adjustment  – Bond Service Fund/SeriesEE EEEE
+1298,Backup EPM Sample Probe for CEMS System,,,,419423,Market Value Adjustment  – Construction Account Fund 
+1300,CMB Remodel Project,,,,419425,Market Value Adjustment  – Bond Service Fund/SeriesGG GGGG
+1301,Bi-Directional Amplification Antenna System,,,,419426,Market Value Adjustment  – Bond Service Fund/SeriesHH HHHH
+1302,Thermal Imager,,,,419427,Market Value Adjustment  – Bond Project Fund/SeriesHH HHHH
+1305,Reclaim Lighting,,,,421101,Miscellaneous Non-Operating Income  – Unrestricted   
+1306,CT Gas Transmitter Upgrade,,,,426202,Other Income Deductions  – Deferred Debt  
+1307,Replacement of Remaining Jordan Drives,,,,427113,Long-Term Debt Interest  – Series EE BondsRefunding RefundingRefunding
+1309,4160 Volt Relays,,,,427114,Long-Term Debt Interest  – Series EE BondsReimburse ReimburseReimburse
+1310,Move Temperature Control Panels,,,,427117,Long-Term Debt Interest  – Series GG Bonds 
+1311,Coal Chute Conversion,,,,427118,Long-Term Debt Interest  – Series HH Bonds 
+1312,Fly Ash Rotary Unloader Replacement,,,,428112,Amortization of Deferred  Debt – Series EEBonds BondsBonds
+1313,Replace Kawasaki Front End Loader Rebuild,,,,428113,Amortization of Deferred  Debt – Series EEBonds BondsBonds
+1315,Automatic Breaker Racking Device,,,,428115,Amortization of Deferred  Debt – Series GGBonds BondsBonds
+1316,KIRK Interlock Replacement Replacement for Baghouse0.00,,,,428116,Amortization of Deferred  Debt – Series HHBonds BondsBonds
+1317,SDA Improvements,,,,428312,Amortization of Deferred  Loss – Series EEBonds BondsBonds
+1319,Scrubber Opt Program,,,,428315,Amortization of Deferred  Loss – Series GGBonds BondsBonds
+1320,Soot Optimization Program,,,,429102,Amortization of Premium  Debt – Series EEBonds BondsBonds
+1321,Warm-up Gun Replacement,,,,429103,Amortization of Premium  Debt – Series EEBonds BondsBonds
+1322,Bison Working Facilities Improvements,,,,429105,Amortization of Premium  Debt – Series GGBonds BondsBonds
+1323,New Generation Resource,,,,429106,Amortization of Premium  Debt – Series HHBonds BondsBonds
+1324,Rail Car Purchase,,,,431101,Other Interest Expense  – Wind Reimbursement  
+1325,Zolo Boss System Installation,,,,432101,Other Interest Expense  – Wind Reimbursement  
+1326,Rawhide Control Room Remodel,,,,447101,Sales for Resale  – Fort Collins  
+1327,Avantis Decision Support Module,,,,447102,Sales for Resale  – Longmont   
+1328,Replace Unit 101 Opacity Monitor,,,,447103,Sales for Resale  – Loveland   
+1329,Mercury Removal System,,,,447104,Sales for Resale  – Estes Park  
+1330,Exciter Life Extension,,,,447199,Sales for Resale  – PRPA System Peak 
+1331,Rawhide Windmill Replacement,,,,447201,Sales for Resale  – Public Service Companyof ofof
+1332,Air Heater Baskets,,,,447202,Sales for Resale  – WAPA – LovelandArea AreaArea
+1336,Boiler Entrance Platform Expansion,,,,447204,Sales for Resale  – Colorado Springs Utilities 
+1337,Condensate Flow Section,,,,447205,Sales for Resale  – Municipal Energy Agencyof ofof
+1338,Coordinated Control System Upgrade,,,,447206,Sales for Resale  – WAPA – ColoradoRiver RiverRiver
+1339,Disc Flow Pumps,,,,447209,Sales for Resale  – Utah Associated MunicipalPower PowerPower
+1340,Door-Warehouse 3 (Maintenance Area),,,,447210,Sales for Resale  – Salt River Project 
+1342,Emergency Generator Diesel Tank Replacement,,,,447211,Sales for Resale  – Deseret G &T TT
+1343,Flux Probe Unit A Generator,,,,447212,Sales for Resale  – Utah Municipal PowerAgency AgencyAgency
+1344,Overhead Door Replacement Warehouse 3 (South Side),,,,447213,Sales for Resale  – Pacificorp   
+1345,Pump Station Air Compressor Upgrade,,,,447214,Sales for Resale  – Tri-State G &T TT
+1346,Reheat Surface,,,,447215,Sales for Resale  – Holy Cross Energy 
+1348,Rotary Car Dumper Hydraulic Lift Replacement,,,,447216,Sales for Resale  – Tri-State G &T TT
+1352,Voltage Regulator Upgrades,,,,447225,Sales for Resale  – Black Hills UtilityCorp CorpCorp
+1353,Fire Alarm Panel Replacement,,,,447229,Sales for Resale  – E-Prime   
+1358,Rainbow Pump Discharge Line,,,,447230,Sales for Resale  – Utilicorp United  
+1359,Locomotive,,,,447231,Sales for Resale  – IDACORP Energy (Idaho) 
+1360,Oil Room Door Replacement,,,,447232,Sales for Resale  – Public Service Companyof ofof
+1361,Vibration Monitoring System,,,,447233,Sales for Resale  – Rocky Mountain ReserveGroup GroupGroup
+1362,Rawhide Security Gate Controls,,,,447234,Sales for Resale  – Arizona Public ServiceCompany CompanyCompany
+1363,Fire Booster Pumps in Silo,,,,447235,Sales for Resale  – Powerex   
+1364,Boiler Feed Pump and Condensate Pump Recirculation,,,,447237,Sales for Resale  – Rocky Mountain GenerationCo-Op Co-OpCo-Op
+1365,Monofill (Solid Waste Disposal) Facility Expansion,,,,447238,Sales for Resale  – Black Hills Power& &&
+1366,Purchase Bobcat Toolcat,,,,447239,Sales for Resale  – Morgan Stanley CapitalGroup GroupGroup
+1370,Locomotive/Rail Car Repair Shop,,,,447240,Sales for Resale  – Basin Electric PowerCooperative CooperativeCooperative
+1373,CT - B Oil Mist Eliminator Modification,,,,447241,Sales for Resale  – Cargill Power Markets 
+1375,CT - D Oil Mist Eliminator Modification,,,,447242,Sales for Resale  – Integrys   
+1376,Ash Water Reclaim Pump Discharge Piping,,,,447243,Sales for Resale  – Southwestern Public Service 
+1378,CT - A Cooling Water Pump Replacement,,,,447244,Sales for Resale  – WACM Balancing Authority 
+1379,CT - B Cooling Water Pump Replacement,,,,447245,Sales for Resale  – Macquarie Energy LLC 
+1380,CT - C Cooling Water Pump Replacement,,,,447299,Sales for Resale  – Capitalized   
+1381,CT - A Combustion Inlet Temperature Grid,,,,456101,Other Electric Revenue  – Wheeling   
+1382,CT - B Combustion Inlet Temperature Grid,,,,500101,Operations Supervision and Engineering Expense
+1383,CT - C Combustion Inlet Temperature Grid,,,,501101,Fuel – Fuel  Expense    
+1384,CT - D Combustion Inlet Temperature Grid,,,,501102,Fuel – Railroad  Car Lease and Other 
+1386,Predictive Analytics,,,,501103,Fuel – Fuel  Handling Expense   
+1387,Overhead Doors Replacement at Rawhide,,,,501104,Fuel – Other  Testing and Analysis  
+1388,Roof Replacement at Rawhide,,,,501105,Fuel – Other  Expenses    
+1390,MMI Toolroom Sliding Door,,,,501106,Fuel – Fuel  Ash Disposal   
+1391,Pasture Wells and Windmills,,,,501111,Fuel – Trapper  Post-Mining Reclamation Costs  
+1392,Bison Working Facilities Improvements,,,,502101,Air Quality Control  Expense    
+1393,Warehouse II Improvements - Air Ventilation and Air0.00,,,,502102,Boiler Operation Expense      
+1395,16th Floor Microwave and Elevator Room Improvements0.00,,,,502103,Boiler Water Treatment  Expense    
+1398,Main Control Room Steel Window Protection,,,,502104,Phosphorus Removal System  Expense    
+1399,"SDA Simulation, Reheat Tube Modeling and HP/IP Turb0.00",,,,502105,Service Water Treatment  Expense    
+1400,Simulator Workshop Upgrade,,,,502106,Demineralizer Expense       
+1401,SKM/PTW Modeling Software,,,,502201,Other Steam Expense      
+1402,Allen-Bradley Controls Upgrade,,,,505101,Turbine Generator Operations      
+1403,PRS Control System Upgrade,,,,505201,Other Electric Expense      
+1405,Bar Coding Add-on for Avantis,,,,505301,Other Electric Expense  – Windy Gap  
+1410,Fire Protection Improvement Plan,,,,506111,Operations Safety and  Training Expense   
+1412,Conveyor 10 Soft Start Installation,,,,506113,Fire Rescue Expense      
+1413,I&E Shop Storage & Work Room Expansion,,,,506201,Miscellaneous Operations Expense      
+1414,Turbine Crane Remote Control,,,,507101,Rents – Rawhide      
+1415,Ash Silo Door,,,,510101,Maintenance Supervision and  Engineering Expenses   
+1416,Crusher Feeder Replacement,,,,511101,Maintenance of Buildings  and Structures   
+1417,Underground Blowdown Line Replacement,,,,511102,Maintenance of Site  Facilities    
+1418,Fire Suppression System RH Server/Phone Room,,,,511103,Maintenance of Lighting  and Communications System  
+1419,Replace Unit 101 NOX Analyzer,,,,511104,Maintenance of Fire  Protection System   
+1420,Boiler Blowdown Line Cathodic Protection,,,,511105,Maintenance of Space  Conditioning    
+1421,Portable Power Analysis & Metering Equipment,,,,511106,Maintenance of Rawhide  Security    
+1422,Baghouse Hopper Sonic Horns,,,,511201,Maintenance of Buildings  and Structures – YAMPA 
+1424,Coal Unloading Truck Locks,,,,512101,Maintenance of Ash  and AQCS Solids System 
+1425,Combustion Turbine CEMS Allen Bradley PLC Replaceme0.00,,,,512102,Maintenance of Compressed  Air System   
+1426,Cancelled,,,,512103,Maintenance of Air  Quality Control System  
+1427,Freight Elevator,,,,512104,Maintenance of Mobile  Equipment    
+1428,Fueling Station System Replacement,,,,512105,Maintenance of Coal  Handling System   
+1429,HVMCC Upgrade,,,,512106,Maintenance of Feedwater  System    
+1435,Turbine Crane Access Safety Cable,,,,512107,Maintenance of Plant  Auxiliary System   
+1436,Unit F Combustion Dynamics Monitor,,,,512108,Maintenance of Steam  Generation System   
+1437,RipRap at CT Site,,,,512109,Maintenance of Water  Supply/Storage/Treatment Systems   
+1438,UPS in Rotary Car Dumper,,,,512201,Maintenance of Boiler  Plant – Other  
+1439,Baghouse Broken Bag Detector,,,,513101,Maintenance of Auxiliary  Power Supply System  
+1440,RA Fan and Recycle Blower Exhaust Fan,,,,513102,Maintenance of Control  System    
+1441,Rawhide Stack Lights Upgrade,,,,513103,Maintenance of Equipment  Cooling System   
+1442,Ambulance Replacement,,,,513104,Maintenance of Cycle  Heat Rejection System  
+1443,Gravel Separator Modification,,,,513105,Maintenance of Turbine  Extraction System   
+1444,Foxboro Upgrade,,,,513106,Maintenance of Turbine  Generator System   
+1446,Redundancy PLC for Soot Blowing Controls,,,,513201,Maintenance of Electric  Plant – Other  
+1447,Governor Valve Servo Controller,,,,514101,Maintenance of Information  System    
+1448,Paging System Upgrade to Bidirectional Antenna,,,,514102,Maintenance of Miscellaneous  Steam Plant – Vehicles 
+1449,CEMS Allen Bradley PLC Controller Unit 1,,,,514111,Maintenance of Safety  and Training   
+1450,Rotary Ash Unloader 101 Replacement,,,,514201,Maintenance of Miscellaneous  Steam Plant – Other 
+1451,Crusher Building Access Door,,,,514202,Maintenance of Miscellaneous  Tools    
+1452,Conveyor 9A-to10A Transfer Chute,,,,514301,Maintenance Expense –  Outage Accrual   
+1453,Conveyor 10A-to-101 Transfer Chute,,,,546101,Other Power Supply  – Operation Supervision andEngineering EngineeringEngineering
+1454,Inlet Programable Logic Controller Node,,,,547101,Other Power Supply  – Natural gas expenses 
+1455,CT NetDAHS Server,,,,547102,Other Power Supply  – Natural gas transportationexpenses expensesexpenses
+1456,Rawhide NetDAHS Server,,,,547103,Other Power Supply  – Other fuel expenses 
+1457,Arc Flash Mitigation,,,,548101,Other Power Supply  – Other Generation Expenses 
+1458,Atomizer 3500 Machinery Protection System,,,,549101,Other Power Supply  – Other Miscellaneous Power Generation GenerationGeneration
+1459,Cold Reheat Safety Valve Replacement,,,,550101,Other Power Supply  – Leases and Rents  
+1460,Conveyor 1 to Conveyor 2 Transfer Chute,,,,551101,Maintenance supervision and  engineering     
+1461,HVAC System Controls Upgrade - Control Building,,,,552101,Maintenance of structures       
+1462,Portable Extrication Equipment,,,,553101,Maintenance of Generating  and Electric Plant   
+1465,Rip Rap - East/West Ditch Along North Road,,,,554101,Maintenance of Miscellaneous  Other Power Generation Plant  
+1466,Sand and Equipment Storage Building (Cover-All),,,,555100,Replacement Purchase Power  Outage Accrual    
+1467,SolarBee Units for Hamilton Reservoir,,,,555101,Purchased Power –  WAPA – Loveland Area Project ProjectProject
+1468,Station 1 HVAC Modification,,,,555102,Purchased Power –  WAPA – Colorado River Storage StorageStorage
+1469,Station 1 Overhead Door,,,,555103,Purchased Power –  WAPA – Colorado River Storage StorageStorage
+1471,Rawhide CT Flame Scanner Improvements,,,,555104,Purchased Power –  WAPA – Loveland Area Project ProjectProject
+1472,Turbine Crane Controls Upgrade,,,,555105,Purchased Power –  Public Service Company of Colorado ColoradoColorado
+1473,Main Plant Elevator Replacement,,,,555107,Purchased Power –  Rocky Mountain Generation Co-Op (RMGC) (RMGC)(RMGC)
+1474,Electric Hoist & Equipment for Boiler Buidling,,,,555108,Purchased Power –  Tri-State G&T Association Inc  
+1475,Combustion Turbine Fast Start Software Units A & b,,,,555110,Purchased Power –  Colorado Springs Utilities (CSU)  
+1476,Morrow Land Acquisitioin,,,,555112,Purchased Power –  Pacificorp     
+1477,Controls Network Upgrade,,,,555114,Purchased Power –  Utah Municipal Power Agency (UMPA) (UMPA)(UMPA)
+1478,Under Fire Air Damper Drives,,,,555117,Purchased Power –  Arizona Public Service Company (APSC) (APSC)(APSC)
+1479,Bandana Lane Land Purchase,,,,555119,Purchased Power –  Salt River Project   
+1480,Rotary Car Dumper Building Dust Suppression System,,,,555120,Purchased Power –  E-Prime     
+1481,Upgrade Radio Communication to Digital,,,,555121,Purchased Power –  IDACORP Energy (Idaho)   
+1482,OSIsoft PI Server Software Upgrade,,,,555122,Purchased Power –  West Plains Energy   
+1484,Bently 3500 Machinery Protection System Upgrade,,,,555123,Purchased Power –  Rocky Mountain Reserve Group (RMRG) (RMRG)(RMRG)
+1485,Burner Management System,,,,555124,Purchased Power –  Public Service Company of New NewNew
+1486,Cathodic Protection - Rawhide 24 Inch Water Pipelin0.00,,,,555125,Purchased Power –  Black Hills Utility Corp  
+1487,Condensate Pump Duplex Suction Strainers,,,,555126,Purchased Power –  Powerex     
+1488,CT Network Switches,,,,555127,Purchased Power –  Mirant     
+1489,Dry Ash Unloader Upgrade,,,,555128,Purchased Power –  Southwestern Public Service   
+1490,Gas Chromatograph,,,,555129,Purchased Power –  Black Hills Power & Light LightLight
+1492,MOV Replacement 24 Inch Pipeline,,,,555130,Purchased Power –  Clipper Wind    
+1493,On-Line Analyzer Replacement,,,,555131,Purchased Power –  Municipal Energy Agency of Nebraska NebraskaNebraska
+1495,Protection Relay Upgrade - 4160 Volt System,,,,555132,Purchased Power –  Morgan Stanley Capital Group  
+1496,Reheat Spray Control Valve Replacement,,,,555133,Purchased Power –  Integrys     
+1497,Rotary Car Dumper Dust Collection System Upgrade,,,,555134,Purchased Power –  Cargill Power Markets   
+1501,Windbox Damper and Air Tip Upgrade,,,,555135,Purchased Power –  Silver Sage    
+1502,Mercury Continuous Emission Monitoring System Probe0.00,,,,555201,Purchased Power –  Banking/Reserves     
+1503,Remote Racking for 12.47kV Substation Breakers,,,,555202,Purchased Power –  Forced Outage Exchange   
+1505,Soldier Canyon Pump Modifications,,,,555203,Purchased Power –  Renewable Energy Certificates   
+1506,Unit 1 Hydrogen Dryer Replacement,,,,555204,Purchased Power –  Ancillary Services    
+1507,GPI Learn,,,,555205,Renewable Inventory Purchased       
+1508,Protective Relay Communications Upgrade,,,,555206,Purchased Power –  Spinning Reserves (Schedule 5)  
+1509,Power Supply Improvements to Turbine Deck,,,,555207,Purchased Power –  Supplemental Reserves – Non-Spinning (Schedule (Schedule(Schedule
+1510,Rawhide Card Access System,,,,555208,Purchased Power –  Commercial Reserves    
+1511,4160 Spare Cubicle Relaying,,,,556101,System Control and  Load Dispatch – Headquarters  
+1514,CO Monitoring System - Coal Handling System,,,,556111,System Control and  Load Dispatch – Safety and andand
+1515,Rawhide Unit 1 DCS Replacement and Expansion,,,,560101,Operations Supervision and  Engineering Expense    
+1518,Dozer Ripper Tooth,,,,561101,Load Dispatching Expense       
+1521,Floor Machine - Small,,,,562101,Station Expense        
+1523,GE HMI Windows 7 Upgrade,,,,563101,Overhead Line Expense       
+1527,Cuda Parts Washer - Diesel Shop,,,,565101,Transmission – Wheeling  Expense – WAPA   
+1528,Pasture Harrow,,,,565102,Transmission – Wheeling  Expense – Other   
+1531,Water Pump,,,,566101,Miscellaneous Transmission Expense       
+1532,Meterological Instrument Replacement,,,,566111,Transmission – Safety  and Training Expense   
+1533,Rawhide Pump 3,,,,567101,Rents – Transmission  Equipment     
+1534,Gas Temp Infrared Pyrometer to Replace Thermoprobe,,,,568101,Transmission Maintenance Supervision  and Engineering Expense   
+1535,SUS 480V Spare Breakers,,,,569101,Maintenance of Structures       
+1536,Rotary Car Dumper Bldg Lighting Improvement,,,,570101,Maintenance of Station  Equipment     
+1538,Soldier Canyon Pump Station Roof Replacement,,,,570102,Maintenance of Primary  Power Supply    
+1539,Dumper Haulage Positioner Brake & Control Upgrade,,,,570103,Maintenance of Communication  Equipment     
+1540,Rawhide Pump Station Roof Replacement,,,,570104,Maintenance of Station  Equipment – Audit   
+1541,RCD Concrete and Roadway,,,,570105,Maintenance of Powerline  Carriers     
+1542,RCD Building Elevator,,,,570106,Maintenance of Transmission  Security     
+1543,Rawhide Unit 1 Condenser Exhauster Motor,,,,571101,Maintenance of Overhead  Lines     
+1544,Rawhide Pump Station Pump #3 Motor,,,,573101,Maintenance of Miscellaneous  Transmission Plant    
+1545,Access Platform for Bulk Trucks,,,,910101,Marketing and Customer  Service     
+1548,Cat Haul Truck #227 Replacement,,,,910102,Demand Side Management  – LightenUP Program   
+1549,Cat Haul Truck #228 Replacement,,,,910103,Demand Side Management  – Electric Efficiency Program  
+1550,Combustion Turbine GPS Time Synchronization,,,,910104,Demand Side Management  – Cooling Rebate Program  
+1551,HVMCC Switchgear Replacements,,,,910105,Demand Side Management  – Residential Lighting Program  
+1552,Rescue #1 Replacement,,,,910106,Demand Side Management  – General    
+1553,Self Contained Breathing Apparatus (SCBA) Replaceme0.00,,,,910107,Demand Side Management  – Retrocommissioning    
+1555,"Unit 1 Controls Network Cyber Security and Redundan939,666.13",,,,910108,Demand Side Management  – Energy Star New Homes HomesHomes
+1556,Waterproof Main Plant Elevator,,,,910109,Demand Side Management  – HVAC Efficiency Contractor Program ProgramProgram
+1557,Forklift Replacement (Site Facilities),,,,910110,Demand Side Management  – Commercial Audit Program  
+1558,Replace Roof Tap HVAC Unit at Rawhide Substation,,,,910111,Demand Side Management  – Positive Energy Program  
+1559,Roof Replacement/Active Coal Silo Support Building,,,,920101,Administrative and General  Salaries     
+1560,Roof Replacement/Crusher Building East Roof,,,,921101,Office Supplies and  Expense     
+1562,Mower Replacement - Toro,,,,921111,Safety and Training       
+1564,Conveyor Belt Fall Protection Guard Rails,,,,921112,Wellness and Incentive  Programs     
+1565,CO Monitor Analyzer,,,,922101,Administrative Expense Transfer  – Credit – Overhead  
+1566,Yampa Environmental Projects,,,,923101,Outside Professional Services  Employed     
+1567,MCC 104 Supply Transformer,,,,924101,Property Insurance –  General     
+1568,A/C Hi-Pot (High Potential) Test Kit,,,,924201,Property Insurance –  Production     
+1569,Seal and Insulate Rawhide Warehouse #3,,,,926102,Pension and Benefits  – Administrative and General  
+1570,Turbine Bay Lighting Upgrade,,,,930101,Board of Directors  and Corporate Expenses   
+1571,Yampa Controls Projects,,,,930102,Corporate Reporting and  Promotional Expenses    
+1572,Soldier Canyon Pump Replacement,,,,930104,Corporate Reporting –  Annual Report    
+1573,Portable Hydrogen Analyzer Replacement,,,,930105,Corporate Reporting –  Quarterly Reports    
+1574,Supply Fan 134 Motor,,,,930201,Research and Development  Expenses     
+1575,Combustion Gas Turbine Network UPS,,,,930203,Environmental Expenses        
+1576,MW Meter Redundancy Panel,,,,930204,Greenhouse Gas Expenses       
+1577,Borescope,,,,931101,Rents – General  Equipment     
+1578,Calibration Equipment - I & E Shop,,,,935101,Building Maintenance        
+1579,Cat Dozer 205 Replacement,,,,935102,Grounds Maintenance        
+1580,Chop Saw - Rawhide Maintenance Shops,,,,935103,Computer Maintenance        
+1581,CO2 CEMS Replacement - Unit 1,,,,935104,Office Furniture and  Equipment Maintenance    
+1582,Continuous Mercury Monitoring Equipment Upgrade,,,,935105,Mobile Radio Maintenance       
+1585,Fixed Fire Protection System - Records Storage,,,,935106,Vehicle Maintenance        
+1586,Impact Wrench Replacement,,,,935107,Security Maintenance        
+1587,Inerting Steam Drain Line Addition - Unit 1,,,,,
+1588,Mower Replacement - Large Rotary,,,,,
+1589,On-Line Analyzer Replacements,,,,,
+1590,Outage Power Feeds - Turbine Deck,,,,,
+1591,Owl Creek Gas Site UPS Replacement,,,,,
+1592,Furniture Replacements - Rawhide Administration,,,,,
+1593,Switchgear and VFD Replacement - Rawhide Pump Stati0.00,,,,,
+1594,Hydrojet Replacements with Wall Blowers,,,,,
+1596,Roller Compactor,,,,,
+1597,SO2 CEMS Replacement - Unit 1,,,,,
+1598,"Soldier Canyon 10"" Line Modifications with New Raw",,,,,
+1599,Soldier Canyon Pump 2 Replacement,,,,,
+1601,SUS Remote Racking and Operation,,,,,
+1602,Tractor Loader Replacement,,,,,
+1603,Tripper Floor Dust Collector System Modification -,,,,,
+1604,Voltage Regulator Replacement - Unit 1,,,,,
+1605,Respirator Fit Tester Replacement,,,,,
+1606,Conveyor 2 Gearbox Replacement,,,,,
+1607,Backup Power Transformer Replacement - CT A,,,,,
+1608,Transformer Replacement - CMB,,,,,
+1609,Portable Vibration Monitor - Rawhide Maintenance,,,,,
+1610,Coal Mill Analyzer Replacement,,,,,
+1611,Office Furniture Replacement-Rawhide Electrical Eng0.00,,,,,
+1612,Coal Dust Pneumatic Conveying System,,,,,
+1614,Fixed Fire Suppression - SDA Computer Control Serve0.00,,,,,
+1615,LED Lighting,,,,,
+1616,Soot Blower Replacement,,,,,
+1617,Brush 1 Fire Truck Replacement,,,,,
+1618,Cat Loader Replacement,,,,,
+1619,Dual Feed Welder Replacement,,,,,
+1620,Network Analyzer Tool,,,,,
+1621,Rail Cars - Aluminum,,,,,
+1623,NOx Analyzer Replacements - Combustion Turbines - U0.00,,,,,
+1624,CO Analyzer Replacements - Combustion Turbines - Un0.00,,,,,
+1625,Grading and Drainage Improvements-Rawhide,,,,,
+1627,Asphalt Improvements - Rawhide Pump Station,,,,,
+1629,Large Floor Machine,,,,,
+1632,HVAC Unit Replacment - Rawhide Resource Room,,,,,
+1633,Erosion Control - Owl Creek Gas Yard,,,,,
+1634,Gearbox Replacement - Conveyor 10A,,,,,
+1635,Capital Spare - Conveyor 10 Gearbox,,,,,
+1636,Turbine Lube Oil Heater,,,,,
+1637,Turbine Lifting Beam,,,,,
+1638,Clean Agent Fire Suppression - CMB Computer Room,,,,,
+1639,Tripper Deck Expansion,,,,,
+1640,Controls HMI Consolidation - Rawhide & Soldier Cany0.00,,,,,
+1642,Generator Lead Bushing Enhancements,,,,,
+1643,Conveyor 2 Gearbox Motor,,,,,
+1644,Vacuum Dehydrator,,,,,
+1645,Generator Stator Rewind - Rawhide Unit 1,,,,,
+1646,Generator Rotor Replacement - Rawhide Unit 1,,,,,
+1648,Asset Management Software,,,,,
+1649,Bently Nevada System 1 Network Security,,,,,
+1650,Bently Nevada System 1 Virtualization and Operating0.00,,,,,
+1651,Bore Welding Machine,,,,,
+1652,CAT Loader 988 Replacement,,,,,
+1654,Feedwater Heater 102 Replacement,,,,,
+1655,Fixed Fire Supression System - Combustion Turbines,,,,,
+1657,Fregihtliner Replacement,,,,,
+1658,Gate Improvements - Lower Dam Road,,,,,
+1659,Horizontal Bore Milling Machine,,,,,
+1660,"Ignitor Upgrade and Fuel Oil System Modifications -74,757.97",,,,,
+1662,Light Tower,,,,,
+1663,Low Impact Secuirty - Rawhide,,,,,
+1664,Office Space Planning - Rawhide CMB,,,,,
+1665,Portable Air Compressor Replacement,,,,,
+1668,Portable Lube Oil Skid - Rawhide Unit 1,,,,,
+1669,Railcar Repair Building Replacement,,,,,
+1670,Relay (12.47kV) Upgrade - Substation Control House,,,,,
+1672,Skid Steer Replacement - Track Type,,,,,
+1677,Transformer Fire protection Upgrade - Rawhide Unit,,,,,
+1679,Water Chemistry Analyzer Replacements,,,,,
+1680,Water Truck Replacement,,,,,
+1681,Utility Task Vehicle - Wildland Fire Apparatus,,,,,
+1682,X-Ray Fluorescence Analyzer,,,,,
+1684,Rawhide CT Gas Yard Communications Conversion,,,,,
+1685,Bottom Ash and Reclaim Pond - CCR Compliance,,,,,
+1687,"Water Chemistry On-line Phosphate Analyzer Replacem15,627.80",,,,,
+1688,Synchronizing System Upgrade - Rawhide Unit 1,,,,,
+1689,Controls Upgrade - Baghouse,,,,,
+1690,Fiber Upgrade - Rawhide Gas Yard,,,,,
+1691,Gas Yard Balance of Plant Controls Replacement,,,,,
+1692,Dry Block Calibrator Replacement,,,,,
+1900,Retirement Work in Progress,,,,,
+1901,Yampa Preliminary Projects,,,,,
+1902,Green Pricing Resource,,,,,
+1903,Rawhide Water Supply,,,,,
+1904,BNSF Contract Negotiation,,,,,
+1905,Antelope Contract Renegotiation,,,,,
+1906,Peaking Resource Evaluation,,,,,
+1908,Emission Reduction Projects at Rawhide,,,,,
+1909,Windy Gap Firming Project,,,,,
+1910,New Resource Study,,,,,
+1911,40MW Peaking Power,,,,,
+1912,Xcel Energy 20MW Peaking Power,,,,,
+1913,10 Inch Pipeline Poudre River Crossing,,,,,
+1914,Southeast Power Project,,,,,
+1916,Wind Site Study,,,,,
+1917,Wind Site Tower Removal,,,,,
+1920,Olympus Dam Hydro Project,,,,,
+1921,SolarBee Circulators,,,,,
+1922,Wind Equipment Removal,,,,,
+1923,ZoloBoss System Installation,,,,,
+1924,Buttonrock Hydropower Project,,,,,
+1925,Carter Lake Hydro Study,,,,,
+1926,Rawhide Entrance Sign,,,,,
+1927,Alternate Power Supply-Gas Yard Controls,,,,,
+1928,Dewcon Humidity Sensor Installation,,,,,
+1929,Granby Hydro Study,,,,,
+1930,CSU Fly Ash Deed Grant,,,,,
+1931,Renewables Source Study,,,,,
+1932,Deed Projects,,,,,
+1933,Study for CO Firing Unit 1,,,,,
+2004,Blanket-General Equipment,,,,,
+2011,Flatiron Relaying Upgrade,,,,,
+2012,Timberline Voltage Rela,,,,,
+2013,Mary's Lake Loop Service,,,,,
+2014,Valley Substation Consl,,,,,
+2015,Boyd Digital Fault Recorder,,,,,
+2016,Harmony Transformer Addition,,,,,
+2017,Rogers Road Substation,,,,,
+2018,Terry/Rogers Rd/Frdhm,,,,,
+2019,Replace Ocb Lp 2282 Brk,,,,,
+2020,Loveland/Derby Hill Cns,,,,,
+2021,Boyd Substation Relay Upgrade,,,,,
+2022,Timberline/Poudre Easement,,,,,
+2023,Install Conduit/Harvard,,,,,
+2024,PVREA Cement Plant Meter,,,,,
+2025,Yampa Preliminary Projects,,,,,
+2026,115kV Capacitor Addition,,,,,
+2027,WEST 115/12.74kV Transformer,,,,,
+2029,Longmont Relay Upgrade,,,,,
+2030,Loveland Relay Upgrade,,,,,
+2032,Boyd Lake Line,,,,,
+2033,Boyd Lake Substation,,,,,
+2034,Terry-Fordham Transmission Project,,,,,
+2035,Valley-Boyd Transmission Project,,,,,
+2036,Overland/LaPorte/Richard Lake Transmission Project,,,,,
+2037,Longmont West Substation,,,,,
+2038,Dixon Creek Substation,,,,,
+2039,Fordham Sub Line Modification,,,,,
+2040,Horseshoe and East Line Relay Replacements,,,,,
+2041,Install LaPorte Tap to Poudre 230/115kV Circuit,,,,,
+2042,Install Poudre to Timberline 230kV Circuit,,,,,
+2043,Install Rawhide to LaPorte 230kV Circuit,,,,,
+2045,Substation Security,,,,,
+2046,Airport Substation RTU Replacement,,,,,
+2048,Terry Sub Line Modification,,,,,
+2049,Install Poudre to Richard Lake 115kV Circuit,,,,,
+2050,Timberline Substation Additions,,,,,
+2051,Station Battery Replacement,,,,,
+2053,Boyd Substation Addition,,,,,
+2054,Longmont Southeast Substation 115 12 47kV Transform0.00,,,,,
+2057,Valley Substation Addition,,,,,
+2058,Poudre Richards Lake Substation Modification,,,,,
+2060,Del Camino Tap Meadow 115kV Transmission Rebuild,,,,,
+2062,Dixon Creek Drake115kV Transmission Upgrade Rebuild0.00,,,,,
+2063,West Tap West 115kV Transmission Upgrade Rebuild,,,,,
+2064,Rogers Road Battery Room Addition,,,,,
+2065,West T/L Mariano Dam Rebuild,,,,,
+2066,Integrated Load Resource Area (ILRA) Metering,,,,,
+2067,Brekke Easement,,,,,
+2068,Ft St Vrain Fordham 230/115kV Transmission Project,,,,,
+2069,Drake-Timberline 115kV Transmission Upgrade,,,,,
+2070,LaPorte Tap-Dixon Creek 230/115kV Transmission Proj0.00,,,,,
+2071,Northwest Substation Breaker Replacement,,,,,
+2072,Terry Substation Addition,,,,,
+2073,Timnath Substation Addition,,,,,
+2074,Boyd Transformers and Capacitors,,,,,
+2075,Boyd Substation Equipment Building,,,,,
+2076,Land for Horseshoe Substation Addition,,,,,
+2077,Boyd Transformers and Capacitors,,,,,
+2078,Linden RTU Replacement,,,,,
+2080,Rawhide Substation Breaker Replacement,,,,,
+2081,Substation Oil Containment Berm Construction,,,,,
+2082,Horseshoe Substation Capacitors,,,,,
+2083,Dixon Creek Horseshoe Transmisssion Project,,,,,
+2084,Rawhide Relay Panel Replacement,,,,,
+2085,Fiber Optic to Estes Park,,,,,
+2086,Fordham Substation Circuit Switcher Replacement,,,,,
+2087,City of Fort Collins Load Shedding Requirements,,,,,
+2088,Timnath-Black Hollow 115 kV Rebuild (WAPA)`,,,,,
+2089,Fordham Substation 230kV Addition,,,,,
+2090,Dixon Dreek Addtion,,,,,
+2091,Horseshoe Sub 230kV Addition,,,,,
+2093,Concrete Work at Boyd Substation,,,,,
+2094,DRC HVAC System Upgrade,,,,,
+2095,Doble IDD Intelligent Diagnostic Sys,,,,,
+2096,Airport Substation Additions,,,,,
+2097,Longmont East Substation,,,,,
+2098,Boyd Substation Access Road,,,,,
+2099,Longs Peak RTU Replacement,,,,,
+2100,Battery Bank Replacement Boyd and Timberline Subs,,,,,
+2101,Longs Peak to Ft St Vrain Fiber Project,,,,,
+2102,La Porte-LaPorte Tap Fiber Project,,,,,
+2103,Ethernet Over Sonet,,,,,
+2104,Richard Lake-Timnath 231kV Transmission Project,,,,,
+2105,Doble IDD Intelligent Diagnostic Sys (Boyd Transfor0.00,,,,,
+2106,Video Server for Substations,,,,,
+2107,Annual Breaker Replacements,,,,,
+2109,Meadow Substation Circuit Swithcher Replacement,,,,,
+2110,Boyd Substation Cable Storage area,,,,,
+2111,Timberline Harmony Upgrade,,,,,
+2112,Transformer Pad at Longs Peak Substation,,,,,
+2113,Breaker Rplcmt-OCB2166 Longs Peak Sub,,,,,
+2114,Longs Peak-Terry Modification,,,,,
+2115,Boyd Substation OCB Replacement,,,,,
+2116,Spare GGB Breakers,,,,,
+2117,GPS Clock/Timing source for DRC and Microwave Room,,,,,
+2118,City of Longmont Load Shedding Project,,,,,
+2119,City of Loveland Data Sharing Project,,,,,
+2120,Timberline CCVT Cable Upgrade,,,,,
+2121,Boyd Substation Water Tap,,,,,
+2122,BN Transmission Easement Longs Peak-Terry,,,,,
+2123,Mary's Lake Substation Modifications,,,,,
+2124,Harmony-Portner-Boyd 230kV Transmission Line,,,,,
+2125,Ft St Vrain Substation Modifications,,,,,
+2126,Boyd Substation Addition,,,,,
+2128,Watthour Meter Test and Calibration System,,,,,
+2129,Timberline Substation Expansion (City of Fort Colli0.00,,,,,
+2130,Richard Lake RTU/Relay Upgrade,,,,,
+2131,Boyd Barn Security System,,,,,
+2132,Terry Fordham Easement Work,,,,,
+2133,Longs Peak Retaining Wall,,,,,
+2134,DILO Gas Leak Detector,,,,,
+2135,Rawhide Switch Replacement,,,,,
+2137,Loveland East Transformer Addition,,,,,
+2138,Substation Security Walls,,,,,
+2140,Substation Security System,,,,,
+2143,Fort Collins Portner Substation,,,,,
+2146,Overland Substation Removal,,,,,
+2147,Harvard Substation Circuit Switcher Replacement,,,,,
+2148,College Lake 230kV Substation,,,,,
+2149,Fiber Relocation I-25 & Crossroads Blvd,,,,,
+2150,OFS Fitel Fusion Splicer,,,,,
+2151,Remote Breaker Racking System,,,,,
+2152,Fiber Locating System,,,,,
+2153,Boyd 115/230kV Transformer Installation (T2),,,,,
+2154,Ft St Vrain-Fordham (Tri-State),,,,,
+2155,Dixon Creek-Horseshoe (Tri-State),,,,,
+2156,Ft St Vrain-Fordham (WAPA),,,,,
+2157,Dixon Creek-Horseshoe (WAPA),,,,,
+2158,Airport Substation Addition (Kelim),,,,,
+2159,LaPorte Substation Modifications,,,,,
+2160,Microwave Network Upgrade,,,,,
+2162,Harmony Substation Battery Bank & Rack Replacement,,,,,
+2163,LaPorte RTU Replacement,,,,,
+2165,WAPA Capital Projects,,,,,
+2166,Microwave Frequency Counter/Power Meter/DVM,,,,,
+2167,Trench Metering Units for CTs,,,,,
+2168,Panorama Peak Standby Generator,,,,,
+2169,Timberline Substation Perimeter Wall,,,,,
+2170,Dixon Creek Substation Perimeter Wall/Landscaping,,,,,
+2171,Medicine Bow Switch & Substation Avian Protection,,,,,
+2172,Fordham-Ft St Vrain Fiber CT Relaying,,,,,
+2173,Harmony-Portner-Boyd Fiber CT Relaying,,,,,
+2174,Dixon Creek-Horseshoe Fiber CT Relaying,,,,,
+2175,Boyd Lean-To,,,,,
+2176,Boyd to DRC Fiber Project,,,,,
+2177,Crossroads Transformer Addition (T2),,,,,
+2178,LaPorte 230kV Breaker Addition,,,,,
+2179,Meadow Substation Ring Breaker,,,,,
+2180,Secure Critical Substations,,,,,
+2181,Timberline Substation 115/230kV Transformer (T4),,,,,
+2182,Terry Street Substation Perimeter Wall,,,,,
+2183,Mary's Lake Battery Bank Replacement,,,,,
+2184,Long Haul East Fiber Relocation,,,,,
+2185,Terry Street Substation Circuit Switcher Upgrade,,,,,
+2186,Battery Charger Replacment (Harmony & Longs Peak),,,,,
+2187,Carey Substation OPGW,,,,,
+2188,Battery Bank Replacement Estes Substation,,,,,
+2189,Relay Replacement Upgrades,,,,,
+2190,Breaker Replacement - Longs Peak Substation Breaker0.00,,,,,
+2191,Dilo Company SF6 Leak Detector,,,,,
+2192,Battery Bank and Charger Replacement - Northwest Su0.00,,,,,
+2193,Breaker Replacement - Timberline Substation Breaker0.00,,,,,
+2194,Breaker Replacement - Valley Substation Breaker 2620.00,,,,,
+2195,Valley MOD 1163 and MOD 1263 Replacement,,,,,
+2196,Waukesha Nitrogen Generator,,,,,
+2199,Doble F6150 Test Set Upgrade,,,,,
+2200,Avery Substation Interconnection,,,,,
+2201,Locating Equipment,,,,,
+2202,Horseshoe T3 & T4 Addition,,,,,
+2203,Breaker Replacement - Timberline Substation Breaker0.00,,,,,
+2204,Battery Bank Replacement - LaPorte Bank #2,,,,,
+2205,Battery Bank Replacement - Rawhide Bank#2,,,,,
+2206,"Breaker Replacement - Boyd 2062, 3062, 3166",,,,,
+2209,Breaker Replacement - LaPorte Breaker 1062,,,,,
+2210,Breaker Replacement - LaPorte Breaker 1166,,,,,
+2211,Breaker Addition - Linden Tech Breaker 462,,,,,
+2213,HVAC Unit Addition - Longmont Northwest Substation,,,,,
+2214,Battery Impedence Tester,,,,,
+2215,Rawhide - LaPorte 230kV Structure and Foundation Re0.00,,,,,
+2216,Roof Replacement - Airport Substation,,,,,
+2219,OPGW Rawhide to I-25,,,,,
+2220,OPGW Rawhide to LaPorte,,,,,
+2221,Boyd (Longs Peak) Relay Replacement,,,,,
+2222,Longs Peak (Boyd) Relay Replacement,,,,,
+2223,Linden Tech Substation Relay Replacement,,,,,
+2224,Battery Bank Replacements,,,,,
+2226,Breaker Replacements - Rawhide Breakers 2142 and 210.00,,,,,
+2227,Emergency Storm Structures - Wood Poles,,,,,
+2228,LaPorte Substation  - 115kV Adaptation and Refurbis0.00,,,,,
+2229,LaPorte Substation - 230kV Expansion,,,,,
+2231,Transmission Line Vault Upgrades - Rogers Road,,,,,
+2235,Security - Longs Peak Substation,,,,,
+2236,"Relay Replacement - Ault KU1C (Western Joint Facili34,400.00",,,,,
+2237,Phase Angle Test Set,,,,,
+2238,Battery Bank Replacement - LaPorte Substation Bank,,,,,
+2239,LaPorte Substation Roof Replacement,,,,,
+2240,Relay Replacement Upgrade - Timberline T3,,,,,
+2241,Roof Replacement - Richards Lake,,,,,
+2242,Relay Addition - Dixon Creek,,,,,
+2243,Airport Bank 2,,,,,
+2244,Loveland West Bank 2,,,,,
+2245,Rawhide Bank 1,,,,,
+2246,Interconnection Transformer - Rawhide Flats Solar,,,,,
+2247,Breaker Replacement - Richard Lake 562,,,,,
+2248,"Transformer Replacement - Ault KU1A345/230kV - West2,198,000.00",,,,,
+2249,RTU Replacement - Drake Substation,,,,,
+2250,"Circuit Switcher (T1) Addition, Breaker Replace",,,,,
+2252,Foothills Substation,,,,,
+2254,"Oil Breaker (2062/2066) Replacments and Relay Upgra700,184.45",,,,,
+2255,"Generation Availability Transformer - Rawhide Subst1,662,462.27",,,,,
+2256,"Oil Breaker (362/462) Replacements and Relay Upgrad141,245.30",,,,,
+2257,Oil Breaker (164) Replace - Terry Street Sub,,,,,
+2258,"Oil Breaker (2082) Replacement - Timberline Substat2,971.88",,,,,
+2259,Sign Installations - 230kV Substations,,,,,
+2261,HVAC Unit Replacements - Substations,,,,,
+2262,"Station Service Replacement - Ault Substation - Wes190,538.00",,,,,
+2263,Breaker (1586/1482) Replacements - Ault Substation,,,,,
+2265,"Surge Arrestors - Ault Substation (Western Joint Fa14,000.00",,,,,
+2266,Battery Bank Replacement-Crossroads Bank #1,,,,,
+2267,Battery Bank Replacement-Terry Street Bank#2,,,,,
+2268,Battery Bank Replacement-Rogers Road Bank #2,,,,,
+2269,"Relay Addition - Craig-Ault 345kV (Western Joint Fa5,040.00",,,,,
+2271,Airflow Spoilers,,,,,
+2273,HVAC Unit Replacements - Substations,,,,,
+2274,Micro-ohm Meter,,,,,
+2275,Nitrogen Generator - Longs Peak Transformer Bank #20.00,,,,,
+2281,Low Impact Security - Substations (owned),,,,,
+2282,Low Impact Security - Sub Control Building A,,,,,
+2283,SF6 Gas Cart Replacement,,,,,
+2284,Relay Replacements - Longs Peak Substation T1 & T2,,,,,
+2285,NA,,,,,
+2286,NA,,,,,
+2287,NA,,,,,
+2901,Laporte-Poudre-Overland,,,,,
+2902,Transmission Struct. In,,,,,
+2903,Loveland East/City Of L,,,,,
+2904,Union Pac. Rr. Rgt Of W,,,,,
+2905,Work For City Of Longmont,,,,,
+2906,Pvrea Transfrm Add/Airport,,,,,
+2907,Maintenance Of Yuma Sub,,,,,
+2908,Work For Proxair,,,,,
+2909,Pole Relocation,,,,,
+2910,Longmont Drafting,,,,,
+2911,Relay Calibration/Kodak,,,,,
+2912,Loveland Drafting Service,,,,,
+2913,Relocation of Estes Substation,,,,,
+2914,Pole Relocation,,,,,
+2915,Highway 36 Pole Relocation,,,,,
+2916,Work for City of Fort Collins,,,,,
+2917,Work for City of Loveland,,,,,
+2918,Work For City of Longmont,,,,,
+2919,Work for Town of Estes Park,,,,,
+2920,Pole Relocation City of Fort Collins,,,,,
+2921,Loveland Court House Fiber Work,,,,,
+2922,Pole Relocation City of Longmont,,,,,
+2923,A1 Transformer to Boyd Lake,,,,,
+2924,Work for Praxair,,,,,
+2925,City of Loveland Substation Maintenance,,,,,
+2926,City of Longmont Spill Containment,,,,,
+2927,Locate Fees for the City of Fort Collins,,,,,
+2928,Dixon Creek Additons,,,,,
+2929,Horsetooth Substation Additions,,,,,
+2930,Fordham Substation Additions,,,,,
+2931,Emergency 911 Feed (Broomfield PD),,,,,
+2932,Harvard Substation Oil Retention,,,,,
+2933,Richard Lake Additions,,,,,
+2934,WAPA Rebuild Hwy 34 to Airport,,,,,
+2935,Loveland East Transformer Addition,,,,,
+2936,Fort Collins Portner Substation,,,,,
+2937,Fort Collins North East Substation,,,,,
+2991,Not Currently Using,,,,,
+2992,Not Currently Using,,,,,
+2995,NA,,,,,
+3002,Blanket-Furniture and Equipment,,,,,
+3003,Blanket-Communication Equipment,,,,,
+3004,Blanket-General Equipment,,,,,
+3005,Blanket-Transportation Equipment,,,,,
+3006,Blanket-Computer Equipment,,,,,
+3011,Additional Office Space,,,,,
+3012,ADA Compliance Upgrade,,,,,
+3013,Replace Phone Sys Pbx,,,,,
+3014,Scada System Replacement,,,,,
+3015,Client Server Computing,,,,,
+3016,Maint Vehicle Storage,,,,,
+3017,Internet Server,,,,,
+3018,North Carport Remodel,,,,,
+3019,Office Remodel,,,,,
+3020,Pso Hvac Upgrade,,,,,
+3021,Telecommunications,,,,,
+3022,Office Remodel,,,,,
+3023,Dispatch Center Remodel,,,,,
+3024,Acct/HR System Replacement,,,,,
+3026,CHAMPS Replacement,,,,,
+3027,Security System Upgrade,,,,,
+3028,Voice Recorder,,,,,
+3029,Market Information System,,,,,
+3031,Upgrade Air Handling System,,,,,
+3032,Exercise Room,,,,,
+3036,Computer Room Modification,,,,,
+3038,Closet Cable Tray,,,,,
+3041,Medicine Bow Wind Site Radio,,,,,
+3042,Platte River Employees Memorial,,,,,
+3043,Remodel Projects,,,,,
+3047,Digital Fault Recorder,,,,,
+3048,PSO Maintenance Office Addition,,,,,
+3049,Dispatch Kitchen/Bathroom Remodel,,,,,
+3050,PSO Remodel HVAC Addition,,,,,
+3051,IT Licensing Audit Project,,,,,
+3052,PSO Offoce Remodel,,,,,
+3053,CHAMPS and Geac Interface,,,,,
+3056,Facilities Roof Replacement,,,,,
+3058,Gate Replacement,,,,,
+3059,Remodel Projects,,,,,
+3061,SCADA Network Security,,,,,
+3062,Active Access,,,,,
+3066,Database Application Server,,,,,
+3067,Disaster Recovery Center Project,,,,,
+3069,Intranet,,,,,
+3070,System Consulting,,,,,
+3071,Microwave HVAC,,,,,
+3073,IT Test Server,,,,,
+3074,Upgrade Network Project,,,,,
+3075,Wellness Center,,,,,
+3076,Platte River Power Authority Signs,,,,,
+3077,DRC Security,,,,,
+3078,Redundant ISP Project,,,,,
+3079,Engineering Line Design Program,,,,,
+3080,Geac Server Upgrade,,,,,
+3081,Network Expansion ENTERASYS Switch Upgrades,,,,,
+3082,Upgrade Application Server,,,,,
+3084,Software Audit and Desktop Support System (SMS),,,,,
+3085,Enterprise Storage Area Network,,,,,
+3086,Network Intrusion System,,,,,
+3087,Replace Desktop Backup System,,,,,
+3088,Enterprise Backup Solution,,,,,
+3089,Terminal Server,,,,,
+3094,General IT Software Project,,,,,
+3097,Barrier Gates for Headquarters,,,,,
+3098,CHAMPS Server Replacement,,,,,
+3100,DRC Fire Safe,,,,,
+3102,Facilities & Pool Garage Roof Replacement,,,,,
+3104,MacIntosh Graphics Workstation,,,,,
+3105,NOC-Networks Operation Center Phase II,,,,,
+3107,Redundant Internet Connecton DRC,,,,,
+3108,SANS Array with Enterprise Backup System Phase II,,,,,
+3109,SCADA Replacement,,,,,
+3111,Terminal Server,,,,,
+3112,IT/Communication Space,,,,,
+3113,Maintenance Management System for WSCC,,,,,
+3114,Network Infrastructure Upgrades,,,,,
+3115,SAN Expansion,,,,,
+3117,Server Management Implementation,,,,,
+3118,Video Conferencing,,,,,
+3119,HQ Shake Shingle Replacement,,,,,
+3120,HVAC Replacement at PSO,,,,,
+3121,Core Switch Upgrade,,,,,
+3122,Hi-Ranger Bucket Truck Replacement,,,,,
+3123,Communications Room,,,,,
+3124,Cooling Tower Replacement,,,,,
+3125,HQ Flat Roof Replacement,,,,,
+3126,Camera and Cars Access Control System Upgrade,,,,,
+3127,Proximity Based Secure Login,,,,,
+3128,MV 90 Migration,,,,,
+3132,SCADA Upgrade,,,,,
+3133,Badging Room HVAC,,,,,
+3134,HQ Rewiring Project,,,,,
+3135,"Cisco Security Monitoring, Analysis and Response Sy0.00",,,,,
+3136,Increase Storage Are Network Capacity,,,,,
+3139,HVAC Replacement in PSO,,,,,
+3140,Vehicle Lift in Maintenance Shop,,,,,
+3141,PI Historian System,,,,,
+3142,Video Conferencing -PSO,,,,,
+3143,Accounts Payable Check Printing Upgrade,,,,,
+3144,Electronic Records Management Project,,,,,
+3145,Disaster Recovery Center Generator,,,,,
+3146,HVAC Unit Replacement (PSO),,,,,
+3147,SONET Equipment Replacement,,,,,
+3148,Telephone Switch Upgrade,,,,,
+3150,CCTV Equipment Replacement,,,,,
+3151,Dictaphone Replacement,,,,,
+3152,SCADA Room Remodel,,,,,
+3154,High Density Records Shelving - HQ,,,,,
+3155,Fire Vault High Density Shelving - HQ,,,,,
+3156,Microsoft Exchange 2007 Upgrade,,,,,
+3157,Electronic Content Management System,,,,,
+3158,Backup/Disaster Recovery Software Upgrade,,,,,
+3159,Rawhide Network Attached Storage,,,,,
+3160,Headquarters Pond Improvements/Dredging,,,,,
+3161,Headquarters HVAC Controls/Air Handler,,,,,
+3164,HQ Bldg HVAC AHU #2 Replacement,,,,,
+3165,SCADA Server Replacement,,,,,
+3166,IT Room Modifications,,,,,
+3167,Critical Infrastructure Protection,,,,,
+3168,Server Virtualization,,,,,
+3170,Cyber Security Intrusion Prevention Equipment,,,,,
+3171,Network Equipment for Internet Access Network,,,,,
+3172,PI Server Upgrade,,,,,
+3175,Storage Area Network Replacement,,,,,
+3177,Elevator Replacement,,,,,
+3178,Electronic Logging Software,,,,,
+3182,Server Virtualization Phase 2,,,,,
+3183,HQ/RH Security Upgrades,,,,,
+3184,PSO HVAC Controls Upgrade,,,,,
+3187,Training Room Office Addition,,,,,
+3188,Information Protection Network Upgrade,,,,,
+3190,Warehouse Setup,,,,,
+3191,Safety Truck Upfit,,,,,
+3192,EO Building Ceiling Replacement,,,,,
+3193,CIP Compliance Status Monitoring,,,,,
+3194,CIP Compliance Backup System,,,,,
+3195,Communication Battery and Charger Replacement,,,,,
+3196,Operations Two-way Radio Replacement,,,,,
+3197,PBX 9-1-1 Project,,,,,
+3198,SONET Redundancy Communications and DRC,,,,,
+3199,Telephone Switch Redundancy and ISDN Implementation0.00,,,,,
+3201,Compellent Storage Area Network Expansion,,,,,
+3202,EO Building Dual Reduandant UPS Upgrade,,,,,
+3203,Fleet Replacements,,,,,
+3204,HQ Fleet Parts Washer,,,,,
+3205,Microwave Building HVAC Controls and Unit Replaceme0.00,,,,,
+3206,Rawhide and Headquarters Security Additions,,,,,
+3207,Tape Backup System Replacement,,,,,
+3209,HQ Office Additions,,,,,
+3210,Fiber Splicing Truck Addition,,,,,
+3211,HQ Roofs Replacement,,,,,
+3212,SharePoint Version History Report,,,,,
+3213,Data Backup Redesign Phase I,,,,,
+3214,RH Substation - Aurora Mitigation,,,,,
+3216,Desktop Data Backup Replacement,,,,,
+3217,CIP Storage Expansion,,,,,
+3218,Alerton Controls for HQ Electrical/Gas/Irrigation,,,,,
+3219,Substation Security Projects,,,,,
+3220,Microwave HVAC Replacements,,,,,
+3223,OSI PI High Availability,,,,,
+3224,Dispatch and Disaster Recovery Center Phone Systems0.00,,,,,
+3225,Dispatch and Disaster Recovery Center Voice Logging0.00,,,,,
+3227,Cisco Infrastructure Refresh,,,,,
+3229,Portable T1 Tester,,,,,
+3230,Battery Conductive Testers,,,,,
+3231,HQ & RH ADA Enhancements,,,,,
+3232,HQ Office Modifications,,,,,
+3233,OSI PI Expansion,,,,,
+3234,Scheduling Package Software,,,,,
+3235,Acronis Storage Expansion,,,,,
+3237,High Density Shelving - CMB Central Files,,,,,
+3238,DRC UPS Replacement,,,,,
+3241,HQ Irrigation System Redesign and Construction,,,,,
+3244,Genie 560 Man-Lift,,,,,
+3252,Auto-CAD Plant Design,,,,,
+3253,Wireless Expansion,,,,,
+3254,Engineering Document Management Software (EDMS),,,,,
+3255,Lock Out Tag Out Computer System (LOTO),,,,,
+3256,SKM Software Upgrade,,,,,
+3259,SCADA and CIP Security Incident and Event Monitorin0.00,,,,,
+3260,SCADA Network Switch Replacement,,,,,
+3261,Communications Room Battery Replacements,,,,,
+3262,Communications Test Set Replacement,,,,,
+3265,Optical Time Domain Reflectometer,,,,,
+3267,Compellent Disk and Shelf,,,,,
+3268,Fiber Conduit Install,,,,,
+3269,Infor Query and Reporter for Smartstream,,,,,
+3270,Comm Vault Capacity License Upgrade,,,,,
+3271,Corporate Firewall to Support V-LAN Segments,,,,,
+3272,Digital Cross Connect Equipment Replacement,,,,,
+3273,HVAC Replacement - Electric Operations,,,,,
+3274,Fiber Cable Replacement - Estes Park,,,,,
+3275,Fiber Splicer Replacement,,,,,
+3276,Landscape Improvements - HQ Southeast Corner,,,,,
+3277,MPLS Switch and Management System,,,,,
+3278,Oil Filter Press Trailer,,,,,
+3282,SCADA Server Replacement,,,,,
+3283,Storage Array Replacement,,,,,
+3284,Telephone Switch UPS - HQ and Rawhide,,,,,
+3285,Telephone VOIP Switch Replacement,,,,,
+3286,Virtualization Hardware Replacement,,,,,
+3287,Electric Cart Replacements,,,,,
+3288,Roof Replacement - Electric Operations Building,,,,,
+3289,SCADA Test Environment,,,,,
+3290,Office Furniture - Electric Operations,,,,,
+3291,Drake Backbone Fiber Build,,,,,
+3292,Dixon Creek Fiber Backbone Rebuild,,,,,
+3293,Office Furniture - Headquarters Buffalo Room,,,,,
+3294,Trimble GPS Unit Purchase,,,,,
+3295,Fiber Optic Route to Estes Park,,,,,
+3296,SolarWinds NetFlow Module - SCADA Services,,,,,
+3298,Patch Panel Replacement - Boyd Substation,,,,,
+3300,Patch Panel Replacement - Harmony Substation,,,,,
+3304,Patch Panel Replacement - Longs Peak Substation,,,,,
+3306,Patch Panel Replacement - Rawhide Relay Room,,,,,
+3308,Battery Replacements - Panorama Peak,,,,,
+3310,Modular Messaging Replacement,,,,,
+3311,Optical Time Domain Reflectometer Replacements,,,,,
+3312,PBX Telephone System Server Replacements,,,,,
+3313,SONET Communication System Replacement,,,,,
+3314,Headquarters Campus,,,,,
+3315,Boom Truck Replacement,,,,,
+3316,Bucket Truck Replacement and Addition,,,,,
+3317,Office Furniture Replacement - General Manager,,,,,
+3318,Generator Replacement - Trailer,,,,,
+3320,Plotter Replacement - Rawhide,,,,,
+3324,Man-Lift and Trailer,,,,,
+3325,Jib Extension for Substation Crane,,,,,
+3326,Roof Fall Protection - EO & HQ,,,,,
+3327,Equal Logic SAN Replacement,,,,,
+3328,Office Furniture-Electric Operations,,,,,
+3329,Fiber Fusion Splicer Kit,,,,,
+3330,Bucket Truck Replacement,,,,,
+3331,City Billing Program,,,,,
+3332,Fiber Power Meter Replacement,,,,,
+3339,"Patch Panel Replacement - Rawhide Generation Perime7,370.70",,,,,
+3341,SCADA Periodic Network Equipment Replacement,,,,,
+3342,SCADA Periodic Server Equipment Replacement,,,,,
+3343,SCADA Periodic Storage Equipment Replacement,,,,,
+3346,Substation Maintenance Application,,,,,
+3347,Transmission System Simulator,,,,,
+3348,Utility Task Vehicle,,,,,
+3349,Telecom Network Timing System Replacement,,,,,
+3350,Video Conferencing - Board and Hearing Rooms,,,,,
+3351,Fiber Manager Software,,,,,
+3352,Light Tower Replacement,,,,,
+3353,Office Spaces - HQ Building,,,,,
+3354,HQ Campus - Land Acquisition,,,,,
+3355,Server Hardware for Network Monitoring,,,,,
+3356,Copier Replacements - Headquarters,,,,,
+3901,Electric Vehicle Demo,,,,,
+3902,Bio-Mass Burner,,,,,
+3903,Transportation Study,,,,,
+3904,Small Hydro Study,,,,,
+3905,Wind Turbine,,,,,
+3906,CIS/Fort Collins,,,,,
+3907,CIS/Longmont,,,,,
+3908,CIS/Communication Hardware,,,,,
+3910,Wind Turbine/Meteorlogical Monitoring System,,,,,
+3912,Telecom:PVH/Harmony Campus/Larimer Co,,,,,
+3913,Praxair Outage,,,,,
+3914,Loveland East Sub Maintenance,,,,,
+3915,Telecom,,,,,
+3916,Mobility Pilot Project,,,,,
+3917,Geographic Information System,,,,,
+3919,Telecom 2003,,,,,
+3920,Fiber Charges,,,,,
+3921,Misc Tower Work for Others,,,,,
+3922,Pandemic Costs,,,,,
+3924,NA,,,,,
+3925,Headquarters Building Addition Study,,,,,
+4501,Loveland Distribution Maintenance,,,,,
+4502,Estes Park Distribution Maintenance,,,,,
+4503,Common Distribution Maintenance,,,,,
+4504,Distribution-PR Charges,,,,,
+4505,Fiber,,,,,
+4506,CIS Fort Collins,,,,,
+4507,CIS Longmont,,,,,
+4508,CIS-Communications Hardware,,,,,
+4509,Fiber Locate Fees,,,,,
+4510,Loveland Fiber Projects,,,,,
+4511,Fort Collins Fiber Projects,,,,,
+4512,Estes Park Fiber Projects,,,,,
+4515,NA,,,,,
+4517,NA,,,,,
+4518,Fordham-Terry 115kv U G Replacement,,,,,
+4519,Loveland East Transmitter,,,,,
+4520,Horseshoe Transmitter,,,,,
+4521,Crossroads Substation T2,,,,,
+4522,3rd Party Unloading,,,,,
+4523,Harmony Substation Wall Project,,,,,
+4525,Rocky Mountain Reliabiltiy Corporation,,,,,
+4526,SCADA - Loveland,,,,,
+4527,SCADA - Estes Park,,,,,
+4528,Peak Elevator Claim,,,,,
+4529,Sprint Cell Tower Project,,,,,
+4530,Fort Collins Distribution Maintenance,,,,,
+4531,Longmont Distribution Maintenance,,,,,
+4532,Solar Interconnection Agreement,,,,,
+4533,Solar Interconnection Facilities (not transformer),,,,,
+4534,Horseshoe RTU,,,,,
+4536,Rawhide Flats Contracted Security,,,,,
+4539,Larimer County Fiber,,,,,
+5002,Outage Expenses,,,,,
+5007,Minor Outage Expenses,,,,,
+5008,Forced Outage,,,,,
+5009,Vehicle Parts and Supplies,,,,,
+5010,Inventory Write Offs,,,,,
+5011,Non-Routine Projects,,,,,
+5013,Document Conversion,,,,,
+5015,Atomizer Wheels,,,,,
+5017,Sump Line Clean Out,,,,,
+5019,Work Clothing,,,,,
+5020,Atomizer Nozzles,,,,,
+5021,Winlectric,,,,,
+5022,Denver Valve and Fitting (Swagelock),,,,,
+5025,Work Boots,,,,,
+5027,Cathodic Protection,,,,,
+5028,Coal Mill Repairs,,,,,
+5030,LED Explosion Proof Work Lights,,,,,
+5032,Plant Auxiliary System Breaker Refurbishments,,,,,
+5036,Rail Car Repair Parts,,,,,
+5037,Stockpile Sealing - Chemicals,,,,,
+5038,Track Inspections - Routine,,,,,
+5040,Lime (Lime + Rail + Fuel Surcharges),,,,,
+5042,Assistance - Payment in Lieu of Taxes,,,,,
+5043,GE Bently Annual Service Agreement,,,,,
+5044,Emerson Support Training,,,,,
+5045,Large Motor Storage,,,,,
+5046,Rotary Car Dumper Modifications,,,,,
+5056,Water Expenses,,,,,
+5057,Coal Expenses,,,,,
+6001,Misc. Materials and Supplies,,,,,
+6002,Work Clothing and Boots,,,,,
+6004,Electrical Supplies,,,,,
+6006,RTU Supplies,,,,,
+6008,Overhead Line Hardware,,,,,
+6010,Equipment and Vehicle Inspections,,,,,
+6012,Calibration or Repair of Test or Small Equipment,,,,,
+6013,Oil Testing,,,,,
+6014,Underground Vault Inspections,,,,,
+6015,Joint Facilities - Western,,,,,
+6016,Joint Facilities - Deseret,,,,,
+6017,Joint Facilities - Xcel,,,,,
+6018,Joint Facilities - Tri-State,,,,,
+6021,Vegetation Management,,,,,
+6022,Tower Maintenance,,,,,
+6023,Obsolete Inventory,,,,,
+6026,Engineering Services,,,,,
+6029,Inert Air,,,,,
+6031,Protest,,,,,
+6032,Doble,,,,,
+6033,WECC Compliance,,,,,
+6034,North American Transmission Forum,,,,,
+6037,RMEL,,,,,
+6039,Mountain States Employer Council,,,,,
+6042,Terry-Fordham Line-BNSF Lease,,,,,
+6043,Wire Line Crossing Permit-BNSF Lease,,,,,
+6044,Transmission Wheeling from Others,,,,,
+6045,Regulation - Ancillary Services,,,,,
+6046,OATI webTrader,,,,,
+6047,CREDA,,,,,
+6048,East Meets West,,,,,
+6052,WECC MIC,,,,,
+6055,OATI,,,,,
+6057,NAESB Electronic Information Registry,,,,,
+6059,5 LTO Tape Packs,,,,,
+6060,Miscellaneous Hardware,,,,,
+6061,Miscellaneous Software,,,,,
+6062,Miscellaneous Hardware & Software-PSP,,,,,
+6063,Commvault Support,,,,,
+6065,CIP-008 and CIP-009 Exercise,,,,,
+6069,VMware Support,,,,,
+6070,OSI PI Support,,,,,
+6071,Survalent Support Agreement,,,,,
+6072,LogRhythm,,,,,
+6074,Cisco Support,,,,,
+6076,Secret Server (Password Keeper),,,,,
+6080,DocMinder Maintenance,,,,,
+6081,Electric Power Training Center,,,,,
+6083,North American Electric Reliability Corporation,,,,,
+6084,Drafting Supplies (Plotter/Copier),,,,,
+6086,Engineering Standards & Reference Materials,,,,,
+6091,WECC,,,,,
+6092,WESTCONNECT,,,,,
+6093,WestTrans,,,,,
+6095,RMRC,,,,,
+6097,Training - Substation Design Engineer,,,,,
+6098,IEEE Membership,,,,,
+6099,CO DORA Licensing,,,,,
+6101,Standby Pay,,,,,
+6102,UNCC,,,,,
+6106,Technical Support-Call Recording Equip (DSS),,,,,
+6107,Microwave Equipment,,,,,
+6109,Comsearch,,,,,
+6110,Sonet Equipment,,,,,
+6111,Technical Support-SONET Equipment,,,,,
+6112,800 Meg Radio Costs,,,,,
+6117,UTC National Conference,,,,,
+6118,UTC Region 8 Meeting,,,,,
+6119,Cell Phone Service,,,,,
+6120,Operations Phone,,,,,
+6121,Long Distance,,,,,
+6122,DID Trunks,,,,,
+6123,Avaya Service Agreement,,,,,
+6125,CenturyLink 324 Wellington,,,,,
+6126,Pipeline Control Room,,,,,
+6129,Longs Peak Meters,,,,,
+6130,Propane-Panorame Peak Microwave Site,,,,,
+6131,Electricity-Cactus Site,,,,,
+6134,Utilities Telecom Council,,,,,
+6136,Robert Heron Lease,,,,,
+6137,Tristate Fiber Lease Loveland to RH,,,,,
+6140,RTCA - Access License,,,,,
+6141,OATI - OASIS Fees,,,,,
+6142,OATI - Tag Agent,,,,,
+6143,OATI - Tag Authority/Approval,,,,,
+6144,OATI - webTag User IDs,,,,,
+6145,OATI - WebTrans Curtailment Manager,,,,,
+6146,OATI - wesTTrans,,,,,
+6147,RTCA - Peak Reliability,,,,,
+6148,QTS-Database Renewal/Upgrade,,,,,
+6149,Peak Reliability Board of Directors,,,,,
+6151,WECC Chief Operator Meetings,,,,,
+6154,EPTC Operator Training,,,,,
+6156,NERC ILA Registration,,,,,
+6157,OATI - User Conference,,,,,
+6158,QTS-Usergroup Training,,,,,
+6159,PSO Trainee NERC Cert,,,,,
+6160,WECC Compliance Usergroup,,,,,
+6165,Peak Reliability,,,,,
+6167,Mountain West Transmission Group (MWTG),,,,,
+6169,OATI - NITS,,,,,
+6170,OATI - Non-NITS,,,,,
+6171,Wheeling Due to Maintenance,,,,,
+6172,Futures Price Discovery,,,,,
+6173,Wind Forecasting,,,,,
+6178,Crane Certification,,,,,
+6181,Relay Setting Peer Reviews,,,,,
+6182,Spring Canyon Wind,,,,,
+6183,Silver Sage Wind,,,,,
+6184,Medicine Bow Wind,,,,,
+6185,DC Trip Checks,,,,,
+6187,DACS Service Contract,,,,,
+6190,Infrared Inspection,,,,,
+6195,American Power Dispatcher Association (APDA) - SW R0.00,,,,,
+6196,Non-Routine - Miscellaneous Software,,,,,
+6198,RSA Support,,,,,
+6203,Fiber Supplies - Jumpers,,,,,
+6206,Fiber Supplies - Fiber Tools,,,,,
+6216,Communication Tools,,,,,
+6217,Non-Routine - Fiber - Fiber Inventory/Audit,,,,,
+6222,Network Integrated Transmission System (NITS),,,,,
+6223,Non-Firm Transmission,,,,,
+6224,Rawhide Solar Flats,,,,,
+6225,Fiber Optic System Inventory - Loveland,,,,,
+6228,Fiber Lease Market Analysis,,,,,
+6229,Phones - New/Replacement,,,,,
+6232,WECC WISP Network Connection,,,,,
+6235,Northwest Substation Water Line Repairs (McIntosh),,,,,
+6236,Pattern Recognition Technology (PRT) Forecasting,,,,,
+6238,Fiber Optic System Inventory - Estes Park,,,,,
+6240,Fiber Optic System Inventory - Fort Collins,,,,,
+6242,Fiber Optic System Inventory - Platte River,,,,,
+6246,WECC Operations Network Connection,,,,,
+6248,OATI PSE Approval Service,,,,,
+6259,OATI webSteering Committee,,,,,
+6260,Spinning Reserves,,,,,
+7001,Carpentry/Painting,,,,,
+7002,Door Maintenance,,,,,
+7003,Electrical Maintenance,,,,,
+7004,Elevator Maintenance,,,,,
+7005,Ergonomic Furniture,,,,,
+7006,Fire Systems,,,,,
+7007,HVAC Maintenance,,,,,
+7008,Janitorial,,,,,
+7009,Appliances,,,,,
+7010,Laundry Service,,,,,
+7011,Office Furniture,,,,,
+7012,Pest Control,,,,,
+7013,Plumbing,,,,,
+7014,Overhead Door Maintenance,,,,,
+7015,Roofing Maintenance,,,,,
+7016,Structured Cabling,,,,,
+7017,Trash Service,,,,,
+7018,Work Clothing,,,,,
+7019,Siding/Building Wall Maintenance,,,,,
+7021,Truck Scale Maintenance,,,,,
+7022,Exercise Equipment,,,,,
+7028,Irrigation,,,,,
+7029,Landscaping Maintenance,,,,,
+7030,Pond Maintenance,,,,,
+7031,Surface Maintenance (Yard Rock and Asphalt),,,,,
+7032,Tree Care,,,,,
+7033,Weed Control,,,,,
+7034,Snow Removal,,,,,
+7035,Fence Maintenance,,,,,
+7036,Well and Windmill Maintenance,,,,,
+7037,Facilities Stock Supplies,,,,,
+7038,Mowing,,,,,
+7041,Toll Fees,,,,,
+7042,Heavy Equipment Inspections,,,,,
+7043,Fleet Tires,,,,,
+7051,Security Systems Equipment - Access Control,,,,,
+7053,Security Guard Services,,,,,
+7054,Security Systems Equipment-Surveillance,,,,,
+7061,Utilities - Cable,,,,,
+7062,Utilities - Electric,,,,,
+7063,Utilities - Gas,,,,,
+7064,Utilities - Water,,,,,
+7065,Facilities Master Plan,,,,,
+7068,Non-Routine - Energy Spirators on Main Plant Elevat0.00,,,,,
+7070,Non-Routine - Floor Replacement - Admin Kitchen Flo0.00,,,,,
+7071,Non-Routine - Compensator Chain on Main Plant Eleva0.00,,,,,
+7075,Non-Routine - HVAC Management,,,,,
+7077,Elevator Maintenance - Rack-n-Pinion,,,,,
+8003,CIP Security,,,,,
+8005,Sustainability,,,,,
+8007,Renewable Expenses,,,,,
+8009,Resource/Records Expenses,,,,,
+8013,Fort Collins,,,,,
+8014,Loveland,,,,,
+8015,Estes Park,,,,,
+8016,Longmont,,,,,
+8017,Renewable Expenses - Tariff 1,,,,,
+8101,Wellness Fair,,,,,
+8102,Workout Room Equipment Replacements,,,,,
+8103,Wellness Program - New Initiatives,,,,,
+8108,Snowfly Program Management,,,,,
+8109,Incentive - Wellness,,,,,
+8110,Incentive - Safety,,,,,
+8111,Incentive - Recognition,,,,,
+8112,Employee Appreciation,,,,,
+8201,Smart Phones,,,,,
+8202,PC/Laptop Replacements,,,,,
+8203,Monitors,,,,,
+8204,Projectors,,,,,
+8205,Misc. Parts and Repairs,,,,,
+8206,Desktop/Server Software,,,,,
+8207,UPS Battery Replacements,,,,,
+8212,Avantis Maintenance,,,,,
+8213,Worktech Time Maintenance,,,,,
+8214,E-Logger Maintenance,,,,,
+8215,MV-90 (Itron),,,,,
+8216,F9 Maintenance,,,,,
+8217,1099 Software,,,,,
+8218,Sympro Maintenance,,,,,
+8219,Raster Design Maintenance (DLT),,,,,
+8220,Map 3D (DLT),,,,,
+8221,AutoCAD Support & Upgrades,,,,,
+8222,PLS-CAD Support & Upgrades,,,,,
+8223,Electrical (DLT),,,,,
+8224,Plant Design AutoCAD (DLT),,,,,
+8225,HP Plotter Maintenance,,,,,
+8226,SKM Software Maintenance,,,,,
+8227,ESRI Arc View GIS,,,,,
+8229,Aspen Oneliner,,,,,
+8230,Aspen Line Database,,,,,
+8232,e-Tap Maintenance,,,,,
+8233,PSS Annual Fee,,,,,
+8234,ARIN AS Renewal,,,,,
+8236,Dell KACE,,,,,
+8239,Dameware Maintenance,,,,,
+8240,APC Rack & UPS Maintenance,,,,,
+8243,Cisco ASA Smartnet Maintenance,,,,,
+8244,Infor Smartstream Maintenance,,,,,
+8245,Solarwinds NPM NCM LEM,,,,,
+8248,General Project Consulting,,,,,
+8249,HP Printer Repair,,,,,
+8250,Internet Access,,,,,
+8252,SPAM Appliance,,,,,
+8253,Trend,,,,,
+8254,Copier Maintenance - Xerox,,,,,
+8255,Copier Maintenance - Canon,,,,,
+8258,DNS Hosting Fees - NestEgg,,,,,
+8263,Planning and Risk Software,,,,,
+8268,Recruiting Expense - Other,,,,,
+8269,Preemployment Physicals,,,,,
+8270,CareerBuilder,,,,,
+8271,Monster,,,,,
+8272,LinkedIn,,,,,
+8275,Salary Survey - EAP DIS,,,,,
+8276,Salary Survey - Western Management Group,,,,,
+8279,Drug Testing Administration,,,,,
+8280,Investigative Services,,,,,
+8281,Warehouse Club,,,,,
+8282,Office Supplies,,,,,
+8283,Printing,,,,,
+8284,Coffee,,,,,
+8285,Flowers,,,,,
+8286,Lunches,,,,,
+8288,Market and Emissions Outlooks,,,,,
+8291,Hourly Price Forecasting and Wind-Load Sharing,,,,,
+8293,Renewables Analysis,,,,,
+8299,New Hire Relocation,,,,,
+8300,External Recruiting Fees,,,,,
+8301,Interview Expenses,,,,,
+8305,SSL Certificates,,,,,
+8307,Tape Library Maintenance,,,,,
+8311,Custom Ear Plugs,,,,,
+8313,Safety Forms,,,,,
+8314,Safety Glasses (incl non-prescription),,,,,
+8316,Fall Protection,,,,,
+8317,Safety Boots and Clothing (incl FR),,,,,
+8318,Safety Tools and Supplies,,,,,
+8320,Medical Supplies/First Aid Kits,,,,,
+8321,Fire Extinguishers-Replace/Parts/Maintenance,,,,,
+8323,NFPA Code Books,,,,,
+8325,Audiometer/Respirator Maintenance,,,,,
+8326,Arc Flash Suits,,,,,
+8327,Ergonomics,,,,,
+8328,Gloves,,,,,
+8332,Occupational Health Testing,,,,,
+8334,Physical Therapy Expenses (incl travel),,,,,
+8340,Continuous Monitoring for Cyber Security,,,,,
+8341,CIS-CAT Cyber Security Assessment/Audit Tool,,,,,
+8343,Software Packaging and Patching Solution,,,,,
+8344,Microsoft 365,,,,,
+8345,Security Training - RH,,,,,
+8346,Security Training - HQ,,,,,
+8347,Internal Audit,,,,,
+8348,Environmental Services,,,,,
+8349,Project Management,,,,,
+8351,Engineering and technical analysis of RICE/Aeros,,,,,
+8352,CHP applications,,,,,
+8356,H.S.A. Contributions - Employer,,,,,
+8358,Financial Risk Software,,,,,
+8361,Legal Services - Mountain West Transmission,,,,,
+8362,Physical Therapy,,,,,
+8363,Electronic Media Sanitization and Disposal,,,,,
+8365,Respirators,,,,,
+8367,Recruiting Expense - Background Checks,,,,,
+8368,Leadership Development Training,,,,,
+8372,EPRI - Electric Power Research Institute,,,,,
+8373,Non-Routine - Environmental Services,,,,,
+8374,Egnyte,,,,,
+8375,ServiceNow Fees,,,,,
+8376,Reliability Compliance Risk Assessment,,,,,
+8377,Docusign,,,,,
+8378,ART - 90 Day Pilot,,,,,
+8380,RH Impoundment Closure Costs-Acctg,,,,,
+8387,United Way,,,,,
+8388,Employee Holiday and Appreciation Event,,,,,
+8399,HR Onboarding Program,,,,,
+9012,Clearing Principal-Power Revenue Bonds,,,,,
+9013,Clearing-Rate Stabilization Withdrawls,,,,,
+9014,Clearing-Rate Stabilization Deposits,,,,,
+9015,Clearing Series S1 Bonds,,,,,
+9016,Unrealized Increase/Decrease Fair Value,,,,,
+9017,Realized Gains/Losses Investments,,,,,
+9024,Wind Turbine Interest Payments,,,,,
+9025,Rate Stabilization Interest Transferred,,,,,
+9026,Proceeds from Issuance of Debt - Par,,,,,
+9027,Proceeds from Debt - Premium/Discount,,,,,
+9028,Escrow Defeased Debt,,,,,
+9029,NA,,,,,
+9030,NA,,,,,
+9331,Billing Demand,,,,,
+9334,Non-Firm Transmission Capacity,,,,,
+9335,PRPA Transmission Charge,,,,,
+9336,Ancillary Services,,,,,
+9351,Energy,,,,,
+9354,Forced Outage Exchange,,,,,
+9355,Interruptible Associated Energy,,,,,
+9357,Wind Energy,,,,,
+9359,Energy - Solar - Rawhide Flats,,,,,
+9360,Energy - JDA,,,,,
+9371,On Peak Energy,,,,,
+9372,NA,,,,,
+9377,On-Peak - JDA,,,,,
+9378,Off-Peak - JDA,,,,,
+9379,Spinning Reserves,,,,,
+9401,Demand - Community Solar Programs,,,,,
+9402,Energy - Community Solar Programs,,,,,
