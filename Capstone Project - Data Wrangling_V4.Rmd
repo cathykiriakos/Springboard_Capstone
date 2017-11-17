@@ -1,0 +1,289 @@
+---
+title: "Capstone_Project_Data_Manipulation"
+author: "Cathy Kiriakos"
+date: "September,12, 2017"
+output: html_document
+---
+
+  
+```{r,set_filepath, include=FALSE}
+path <- file.path("C:", "Users","kiriakosc", ".git", "Springboard_Capstone") 
+```
+#Load Data 
+In this process all data  for,Sprinboard Capstone Data Wrangling will be uploaded, this includes GL Data, Avantis or,PO System Data, Budget Data, and Lookup data for,Account Number, Activity Code, and Expense Code Descriptions
+
+```{r,load_csvs, warning=FALSE, include=FALSE}
+Capstone_Avantis_Transformed <-read.csv(file.path(path,"Capstone_Avantis_Transformed.csv"),header = TRUE, stringsAsFactors = FALSE ) #Avantis base data
+Capstone_GL_Transformed <-read.csv(file.path(path,"Capstone_GL_Transformed.csv"),header = TRUE, stringsAsFactors = FALSE) #GL base data
+Budget_Information <- read.csv(file.path(path,"Budget Information.csv"),header = TRUE, stringsAsFactors = FALSE ) #Budget Data
+Code_Lookup <-read.csv(file.path(path,"Code Lookup.csv"),header = TRUE, stringsAsFactors = FALSE) #Account Number, Activity Code, and Expense Code Lookup
+```
+#Load needed packages
+Data Wrangling for,this project will require magrittr, formatR, dplyr, tydyr, and devtools
+```{r,load_packages, include=FALSE}
+library(magrittr) 
+library(formatR) 
+library(dplyr) 
+library(tidyr) 
+library(devtools) 
+library(plyr)
+library(data.table)
+```
+
+#Prepare all data frames to be merged
+
+##Transform Avantis Data: 
+###Step 1 break apart Avantis Purchase Order,Data using tidyr: 
+
+This process is using the separate funciton in tidyr,to separate G.L.Account.number,into six new columns: Company Id, Account Number, Expense Code, Department, Location, Activity Code, and Center.  Again by using the separate function, the date will be broken apart into month, day, and year. By breaking apart these identifyiers we can then merge this data using common identifyiers with the GL data.  
+Lastly, to clean up the data and ensure that it has beeen transformed appropriately, the leading spaces are trimmed from all columns in the data set, and the head of the data set is called to view and ensure that the transformation has been accomplished as intended
+
+```{r,Transform_Avantis_Data}
+Avantis_Transformed <- Capstone_Avantis_Transformed %>% 
+  separate("G.L.Account.number", c("Company Id","Account Number", "Expense Code", "Department","Location","Activity Code","Center") , sep = "\\-") %>% 
+  #Transform Avantis Data: Step 2 pull apart date into month and year
+  separate("Processing.Date", c("Month","Day", "Year") , sep = "\\/") 
+#Trim leading and trailing white space from columns
+Avantis_Transformed <- data.frame(lapply(Avantis_Transformed,trimws) , stringsAsFactors = FALSE) 
+
+#Remove Capstone Avantis Transformed
+rm(Capstone_Avantis_Transformed)
+
+#View Output  
+head(Avantis_Transformed,10) 
+```
+ 
+##Transform GL Data: 
+### Step 2: Break apart GL Data using tidyr
+
+This process again is using the separate function to create four,new columns: Segment,  Recevable/Catalog Code, "PO Number, and "Invoice Number/Warehouse Detail. By breaking apart these identifyiers we can then merge this data using common identifyiers with the Avantis PO data.
+
+Lastly, leading and trailing spaces are removed from the columns to ensure the merge function will work appropriately, and the head of the data set is called to ensure data was transformed appropriately.
+
+```{r,Transform_GL_Data}
+GL_Transformed <- Capstone_GL_Transformed %>% 
+  separate("descp", c("Segment","Recevable/Catalog Code", "PO Number", "Invoice Number/Warehouse Detail") , sep = "\\-", fill = "left") 
+#Trim leading and trailing white space from columns
+GL_Transformed <- data.frame(lapply(GL_Transformed,trimws) , stringsAsFactors = FALSE) 
+
+#Remove Capstone GL Transformed
+rm(Capstone_GL_Transformed)
+
+#View Output 
+head(GL_Transformed,10)
+```
+## Perform Code Lookup manipulations for,merge
+#Break Apart Code Lookup to make merge for,descriptions function
+For this to be accompllished appropriately, three new data frames will be created with only their needed columns selected so that the merge function can function appropriately
+```{r,Break_Apart_Code_Lookup}
+Activity_Code_Lookup <- select(Code_Lookup, Activity.Code, Activity.Description) 
+Expense_Code_Lookup <- select(Code_Lookup, Expense.Code, Expense.Code.Description, Expense.Code.Category) 
+Account_Code_Lookup <- select(Code_Lookup, Account.Number, Account.Description) 
+
+#Remove Code Lookup
+rm(Code_Lookup)
+```
+
+```{r}
+#remove heading and trailing spaces for merge
+Expense_Code_Lookup <- data.frame(lapply(Expense_Code_Lookup,trimws) , stringsAsFactors = FALSE) 
+Activity_Code_Lookup <- data.frame(lapply(Activity_Code_Lookup,trimws) , stringsAsFactors = FALSE) 
+Account_Code_Lookup <- data.frame(lapply(Account_Code_Lookup,trimws) , stringsAsFactors = FALSE) 
+```
+
+#Prepare Budget data:
+```{r,Prepare_BudgetData}
+# 1) Break apart F9 Budget data 
+Budget_Information_Transformed <- Budget_Information %>% 
+  separate("Account", c("Company_Code", "Account_Number", "Expense_Code", "Department", "Location", "Activity_Code","Center") , sep = "\\-", fill = "left") 
+
+#2) Trim Whitespace
+Budget_Information_Transformed <- data.frame(lapply(Budget_Information_Transformed, trimws) , stringsAsFactors = FALSE) 
+
+#Remove Budget_Information
+rm(Budget_Information)
+```
+
+#Test Vectors to Ensure that data will merge:
+Vector,types are tested to ensure data will merge appropriately starting with GL, and followed by Avantis Data 
+GL: 
+
+###View Avantis Data frame to ensure join call will funciton
+```{r,View_Data_Avantis_Tranformed,include=FALSE}
+head(Avantis_Transformed) 
+```
+
+###View GL Data frame to ensure join call will funciton
+```{r,View_GL_Transformed,include=FALSE}
+head(GL_Transformed) 
+str(GL_Transformed) 
+```
+
+##Merge GL & Avantis Data Sets: 
+The merge funciton is called to link the GL base data with the needed details from the Avantis Purchase Order,Data.  
+```{r,MergeGL&Avantis}
+GL_Final <-  merge(GL_Transformed,Avantis_Transformed, 
+                                        by.x = c("account","department","expense_code", "SumOftrans_amt","posting_yr","posting_pd"),
+                                        by.y = c("Account.Number","Department","Expense.Code","Extended.line.amount_1","Year","Month") ,all.x = TRUE) 
+
+#remove GL_Transformed
+rm(GL_Transformed)
+```
+
+##Bind budget data to GL_Final 
+This will bind the budget data frame to the GL_Final data frame so that both budget and actual expenditures can be viewed from a singled data frame
+
+```{r,Bind_GL&Budget}
+GL_Final <- bind_rows(GL_Final, Budget_Information_Transformed) 
+```
+
+##Incorporate and clean up Budget Data in GL 
+This process is moving the same column information from the budget data merge, and moving it to the same columns of the base GL Data, this is a process needed to clean the data up so that only pertinant columns are used
+
+First na's will be removed so that data can be moved/cleaned
+```{r, natoblank}
+GL_Final[is.na(GL_Final) ] <- ""
+```
+
+Next incorporate budget data into base data
+```{r,Incorporate_BudgetData}
+#Incorporate Budget into base data 
+GL_Final$account <- ifelse(GL_Final$account == "", 
+                           GL_Final$Account_Number, 
+                           GL_Final$account) #move budget account to GL account column
+
+GL_Final$expense_code <- ifelse(GL_Final$expense_code == "",
+                                GL_Final$Expense_Code,
+                                GL_Final$expense_code) #move budget expense code to G Lexpense code column
+
+GL_Final$activity <- ifelse(GL_Final$activity == "", 
+                            GL_Final$Activity_Code, 
+                            GL_Final$activity) #move budget activity code to GL activity code column
+
+GL_Final$department <- ifelse(GL_Final$department == "", 
+                              GL_Final$Department, 
+                              GL_Final$department)  #move budget department number,to GL department number,column
+
+GL_Final$SumOftrans_amt <- ifelse(GL_Final$SumOftrans_amt == "", 
+                                  GL_Final$Amount, 
+                                  GL_Final$SumOftrans_amt) #move budget dollar,amounant to GL SumofTrans_amt column
+
+GL_Final$posting_yr <- ifelse(GL_Final$posting_yr == "", 
+                              GL_Final$Years, 
+                              GL_Final$posting_yr) #move budget year,to GL year,column
+
+GL_Final$posting_pd <- ifelse(GL_Final$posting_pd == "", 
+                              GL_Final$Period, 
+                              GL_Final$posting_pd) #move budget month to GL month 
+
+GL_Final$location <- ifelse(GL_Final$location == "", 
+                            GL_Final$Location, 
+                            GL_Final$location) #move budget location to GL location column 
+
+GL_Final$Types <- ifelse(GL_Final$Types == "",
+                         "ACTUAL",GL_Final$Types) #Fill blanks in Types columns to ACTUAL
+```
+
+##Plyr Join GL_Final with Activity Code Descriptions
+This call allows for,easy identification of the activity code in the data.  It is accomplished  using all x or,GL Data to be merged with the respective activity code data frame
+
+```{r,joinActivity, error=FALSE}
+GL_Final <- GL_Final %>% 
+  join(Activity_Code_Lookup, by = c("activity" = "Activity.Code"), type = "left", match = "all")
+
+rm(Activity_Code_Lookup)
+```
+
+##Inner_Join GL_Final with Expense Code Descriptions
+This call allows for_,easy identification of the expense code in the data.  It is accomplished  using all x or,GL Data to be joined with the respective expense code data frame
+
+```{r,join_withEC}
+GL_Final <- GL_Final %>% 
+  inner_join(Expense_Code_Lookup, by = c("expense_code" = "Expense.Code"))
+
+#remove Expense_Code_Lookup
+rm(Expense_Code_Lookup)
+```
+
+##Left_Join GL_Final with Account Code Descriptions 
+This call allows for,easy identification of the account code in the data.  It is accomplished  using all x or,GL Data to be merged with the respective account code data frame
+
+```{r, mergeaccountcode}
+#This is the solution!
+GL_Final <- GL_Final %>% 
+  left_join(Account_Code_Lookup, by = c("account" = "Account.Number"), match = "all")
+
+#remove Account_Code_Lookup
+rm(Account_Code_Lookup)
+```
+##Consolidate data & remove unneeded columns:
+Columns noted as null are duplicate and not needed 
+```{r,Consolidate_data}
+GL_Final$Years  <- NULL
+GL_Final$Currencies <- NULL
+GL_Final$Company_Code <- NULL
+GL_Final$Account_Number <- NULL
+GL_Final$Expense_Code <- NULL
+GL_Final$Department<- NULL
+GL_Final$Activity_Code <- NULL
+GL_Final$Description <- NULL
+GL_Final$Period <- NULL
+GL_Final$Amount <- NULL
+GL_Final$Companies <- NULL
+
+head(GL_Final) 
+```
+View Stucture to identify any vectors that may need to be changed:
+```{r}
+str(GL_Final) 
+```
+## Update Vectors that need to be changed from character,to numeric for,analysis
+Change posting_period  and account number,to numeric for,season classification and account designation
+```{r,update_vectors}
+GL_Final[,"account"] <- as.numeric(GL_Final[,"account"]) 
+GL_Final[,"SumOftrans_amt"] <- as.numeric(GL_Final[,"SumOftrans_amt"]) 
+GL_Final[,"posting_pd"] <- as.numeric(GL_Final[,"posting_pd"])
+```
+##Trim Whitespace
+Trim all heading and leading white space in the GL_Final data frame to ensure easy analysis
+```{r,trim}
+#Trim leading and trailing white space from columns
+GL_Final <- data.frame(lapply(GL_Final,trimws) , stringsAsFactors = FALSE) 
+```
+#View Head
+Ensure that data frame manipulations have occured as intended by viewing GL_Final head
+```{r,head}
+head(GL_Final) 
+head(SeasonLookup)
+sapply(GL_Final$posting_pd,class)
+sapply(SeasonLookup$posting_pd,class)
+```
+##Add Capital or,O&M designations to GL_Final
+Accounts under,number,140000 are capital accounts , all others are O&M
+```{r,Add_AccountDesignations}
+GL_Final$Designation <- ""
+GL_Final$Designation <- ifelse(GL_Final$account < 140000,"Capital" ," O&M") 
+```
+
+##Add seasonal designations to GL_Final
+Incorporate season into data for,Time Series Analysis: not returning values for,all months? 
+
+###Create Season lookup table for join 
+```{r,lookupforseason}
+SeasonLookup <- setNames(data.table(matrix(nrow = 0, ncol = 2)), c("posting_pd", "Season"))
+SeasonData <- data.table(posting_pd= c("1","2","3","4","5","6","7","8","9","10","11","12","13"),Season=c("Winter","Winter","Spring","Spring","Spring","Summer","Summer","Summer","Fall","Fall","Fall","Winter","Period13"))
+rbindlist(list(SeasonLookup,SeasonData))
+SeasonLookup
+```
+###Merge Season with base data 
+```{r, season}
+GL_Final <- merge(GL_Final,SeasonData,by = "posting_pd", all.x = TRUE)
+```
+Replace GL_Final NAs with blank
+```{r,Replace_GL_NAs}
+GL_Final[is.na(GL_Final) ] <- ""
+```
+
+
+
+
