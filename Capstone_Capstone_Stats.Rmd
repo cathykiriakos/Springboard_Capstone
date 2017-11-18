@@ -1,0 +1,110 @@
+---
+title: "Springboard_Capstone_Stats"
+author: "Cathy Kiriakos"
+date: "November 17, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r, include=FALSE}
+library(reshape)
+library(reshape2)
+library(tables)
+library(ggplot2)
+```
+
+
+##Can you count something interesting? 
+Counts in budget data are not very indiciative of trends, but sums by category are.  Below we will see summaries of O&M expenditures by year.
+
+The first step is to subset data by O&M budget & expeditures by year: 
+```{r,results_by_yr}
+Results_2015 <- filter(GL_Final,posting_yr == "2015"| Designation == "O&M"|Types == "ACTUAL" )
+Budget_2015 <- filter(GL_Final,posting_yr == "2015"| Designation == "O&M"|Types == "BUDGET" )
+head(Results_2015)
+head(Budget_2015)
+```
+```
+Results_2016 <- filter(GL_Final,posting_yr == "2016"| Designation == "O&M"|Types == "ACTUAL" )
+Budget_2016 <- filter(GL_Final,posting_yr == "2016"| Designation == "O&M"|Types == "BUDGET" )
+head(Results_2016)
+head(Budget_2016)
+
+Results_2017 <- filter(GL_Final,posting_yr == "2017"| Designation == "O&M"|Types == "ACTUAL" )
+Budget_2017 <- filter(GL_Final,posting_yr == "2017"| Designation == "O&M"|Types == "BUDGET" )
+
+head(Results_2017)
+head(Budget_2017)
+
+```
+Next we will create tables to view expenditures by expense code, activity code and account number within their respective years vs. their respected budget amounts:
+Starting with a 2015 summary: here we will melt the data to indicate id variables & measure variables 
+```{r, melt}
+Melt2015Res <- melt(Results_2015, id.vars = c("Expense.Code.Description", "Activity.Description", "account", "Types", "Season"),measure.vars = "SumOftrans_amt", na.rm = TRUE)
+
+Melt2015Bud <- melt(Budget_2015, id.vars = c("Expense.Code.Description", "Activity.Description", "account", "Types", "Season"),measure.vars = "SumOftrans_amt", na.rm = TRUE)
+
+Melt2016Res <- melt(Results_2016, id.vars = c("Expense.Code.Description", "Activity.Description", "account", "Types", "Season"),measure.vars = "SumOftrans_amt", na.rm = TRUE)
+
+Melt2016Bud <- melt(Budget_2016, id.vars = c("Expense.Code.Description", "Activity.Description", "account", "Types", "Season"),measure.vars = "SumOftrans_amt", na.rm = TRUE)
+
+Melt2017Res <- melt(Results_2017, id.vars = c("Expense.Code.Description", "Activity.Description", "account", "Types", "Season"),measure.vars = "SumOftrans_amt", na.rm = TRUE)
+
+Melt2017Bud <- melt(Budget_2017, id.vars = c("Expense.Code.Description", "Activity.Description", "account", "Types", "Season"),measure.vars = "SumOftrans_amt", na.rm = TRUE)
+
+#view first few rows of melted data sets
+head(Melt2015Res)
+head(Melt2015Bud)
+head(Melt2016Res)
+head(Melt2016Bud)
+head(Melt2017Res)
+head(Melt2017Bud)
+```
+Now that the data is melted we can cast to build a pivot table summary: 
+
+```{r, cast}
+cast(Melt2015, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+
+cast(Melt2016, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+
+cast(Melt2017, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+
+```
+
+
+
+#Can you find some trends (high, low, increase, decrease, anomalies)?
+```{r}
+
+```
+
+
+Can you make a bar plot or a histogram?
+```{r}
+
+```
+
+
+Can you compare two related quantities?
+```{r}
+
+```
+
+
+Can you make a scatterplot?
+```{r}
+
+```
+
+
+Can you make a time-series plot?
+```{r}
+
+```
+
+
+Having made these plots, what are some insights you get from them? Do you see any correlations? Is there a hypothesis you would like to investigate further? What other questions do they lead you to ask?
+
+2 Project: Submit a short report on your s
