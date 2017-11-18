@@ -283,7 +283,15 @@ Replace GL_Final NAs with blank
 ```{r,Replace_GL_NAs}
 GL_Final[is.na(GL_Final) ] <- ""
 ```
+Convert SumOfTrans_amt to numeric for stats
+```{r, sumoftransamttonumeric, error=FALSE}
+GL_Final$SumOftrans_amt <- as.numeric(as.character(GL_Final$SumOftrans_amt))
+```
 
+Test to ensure that the conversion to numeric worked: 
+```{r}
+sum(GL_Final$SumOftrans_amt,na.rm = TRUE)
+```
 
 
 
