@@ -21,19 +21,20 @@ Counts in budget data are not very indiciative of trends, but sums by category a
 
 The first step is to subset data by O&M budget & expeditures by year: 
 ```{r,results_by_yr}
-Results_2015 <- filter(GL_Final,posting_yr == "2015"| Designation == "O&M"|Types == "ACTUAL" )
-Budget_2015 <- filter(GL_Final,posting_yr == "2015"| Designation == "O&M"|Types == "BUDGET" )
+Results_2015 <- filter(GL_Final,grepl("2015", posting_yr) &  grepl("O&M", Designation) &  grepl("ACTUAL",Types))
+Budget_2015 <- filter(GL_Final,grepl("2015", posting_yr) &  grepl("O&M", Designation) &  grepl("BUDGET",Types))
+
 head(Results_2015)
 head(Budget_2015)
-```
-```
-Results_2016 <- filter(GL_Final,posting_yr == "2016"| Designation == "O&M"|Types == "ACTUAL" )
-Budget_2016 <- filter(GL_Final,posting_yr == "2016"| Designation == "O&M"|Types == "BUDGET" )
+
+Results_2016 <- filter(GL_Final,grepl("2016", posting_yr) &  grepl("O&M", Designation) &  grepl("ACTUAL",Types))
+Budget_2016 <- filter(GL_Final,grepl("2016", posting_yr) &  grepl("O&M", Designation) &  grepl("BUDGET",Types))
+
 head(Results_2016)
 head(Budget_2016)
 
-Results_2017 <- filter(GL_Final,posting_yr == "2017"| Designation == "O&M"|Types == "ACTUAL" )
-Budget_2017 <- filter(GL_Final,posting_yr == "2017"| Designation == "O&M"|Types == "BUDGET" )
+Results_2017 <- filter(GL_Final,grepl("2017", posting_yr) &  grepl("O&M", Designation) &  grepl("ACTUAL",Types))
+Budget_2017 <- filter(GL_Final,grepl("2017", posting_yr) &  grepl("O&M", Designation) &  grepl("BUDGET",Types))
 
 head(Results_2017)
 head(Budget_2017)
@@ -65,17 +66,23 @@ head(Melt2017Bud)
 Now that the data is melted we can cast to build a pivot table summary: 
 
 ```{r, cast}
-cast(Melt2015, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+cast(Melt2015Res, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
 
-cast(Melt2016, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+cast(Melt2015Bud, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
 
-cast(Melt2017, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+cast(Melt2016Res, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+
+cast(Melt2016Bud, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+
+cast(Melt2017Res, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
+
+cast(Melt2017Bud, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
 
 ```
 
 
 
-#Can you find some trends (high, low, increase, decrease, anomalies)?
+##Can you find some trends (high, low, increase, decrease, anomalies)?
 ```{r}
 
 ```
