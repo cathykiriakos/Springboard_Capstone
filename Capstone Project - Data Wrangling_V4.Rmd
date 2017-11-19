@@ -7,7 +7,7 @@ output: html_document
 
   
 ```{r,set_filepath, include=FALSE}
-path <- file.path("C:", "Users","kiriakosc", ".git", "Springboard_Capstone") 
+path <- file.path("C:", "Users","Documents","GitHub", "Springboard_Capstone") 
 ```
 #Load Data 
 In this process all data  for,Sprinboard Capstone Data Wrangling will be uploaded, this includes GL Data, Avantis or,PO System Data, Budget Data, and Lookup data for,Account Number, Activity Code, and Expense Code Descriptions
