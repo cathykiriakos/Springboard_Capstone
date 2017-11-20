@@ -7,7 +7,8 @@ output: html_document
 
   
 ```{r,set_filepath, include=FALSE}
-path <- file.path("C:", "Users","Documents","GitHub", "Springboard_Capstone") 
+path <- "~/GitHub/Springboard_Capstone/"
+
 ```
 #Load Data 
 In this process all data  for,Sprinboard Capstone Data Wrangling will be uploaded, this includes GL Data, Avantis or,PO System Data, Budget Data, and Lookup data for,Account Number, Activity Code, and Expense Code Descriptions
@@ -23,10 +24,10 @@ Data Wrangling for,this project will require magrittr, formatR, dplyr, tydyr, an
 ```{r,load_packages, include=FALSE}
 library(magrittr) 
 library(formatR) 
+library(plyr)
 library(dplyr) 
 library(tidyr) 
 library(devtools) 
-library(plyr)
 library(data.table)
 ```
 
@@ -59,6 +60,8 @@ head(Avantis_Transformed,10)
 This process again is using the separate function to create four,new columns: Segment,  Recevable/Catalog Code, "PO Number, and "Invoice Number/Warehouse Detail. By breaking apart these identifyiers we can then merge this data using common identifyiers with the Avantis PO data.
 
 Lastly, leading and trailing spaces are removed from the columns to ensure the merge function will work appropriately, and the head of the data set is called to ensure data was transformed appropriately.
+
+MISSING VALUES-CHECK
 
 ```{r,Transform_GL_Data}
 GL_Transformed <- Capstone_GL_Transformed %>% 
