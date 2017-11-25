@@ -7,8 +7,7 @@ output: html_document
 
   
 ```{r,set_filepath, include=FALSE}
-path <- "~/GitHub/Springboard_Capstone/"
-
+path <- file.path("C:", "Users","kiriakosc", ".git", "Springboard_Capstone") 
 ```
 #Load Data 
 In this process all data  for,Sprinboard Capstone Data Wrangling will be uploaded, this includes GL Data, Avantis or,PO System Data, Budget Data, and Lookup data for,Account Number, Activity Code, and Expense Code Descriptions
@@ -41,11 +40,14 @@ Lastly, to clean up the data and ensure that it has beeen transformed appropriat
 
 ```{r,Transform_Avantis_Data}
 Avantis_Transformed <- Capstone_Avantis_Transformed %>% 
-  separate("G.L.Account.number", c("Company Id","Account Number", "Expense Code", "Department","Location","Activity Code","Center") , sep = "\\-") %>% 
+  separate("G.L.Account.number", c("Company Id","account", "expense_code", "department","location","activity","Center") , sep = "\\-") %>% 
   #Transform Avantis Data: Step 2 pull apart date into month and year
-  separate("Processing.Date", c("Month","Day", "Year") , sep = "\\/") 
+  separate("Processing.Date", c("posting_pd","day", "posting_yr") , sep = "\\/") 
 #Trim leading and trailing white space from columns
 Avantis_Transformed <- data.frame(lapply(Avantis_Transformed,trimws) , stringsAsFactors = FALSE) 
+
+#Rename Extended.Line.Amount_1
+names(Avantis_Transformed)[names(Avantis_Transformed) == "Extended.line.amount_1"] <- "SumOftrans_amt"
 
 #Remove Capstone Avantis Transformed
 rm(Capstone_Avantis_Transformed)
@@ -60,8 +62,6 @@ head(Avantis_Transformed,10)
 This process again is using the separate function to create four,new columns: Segment,  Recevable/Catalog Code, "PO Number, and "Invoice Number/Warehouse Detail. By breaking apart these identifyiers we can then merge this data using common identifyiers with the Avantis PO data.
 
 Lastly, leading and trailing spaces are removed from the columns to ensure the merge function will work appropriately, and the head of the data set is called to ensure data was transformed appropriately.
-
-MISSING VALUES-CHECK
 
 ```{r,Transform_GL_Data}
 GL_Transformed <- Capstone_GL_Transformed %>% 
@@ -98,7 +98,7 @@ Account_Code_Lookup <- data.frame(lapply(Account_Code_Lookup,trimws) , stringsAs
 ```{r,Prepare_BudgetData}
 # 1) Break apart F9 Budget data 
 Budget_Information_Transformed <- Budget_Information %>% 
-  separate("Account", c("Company_Code", "Account_Number", "Expense_Code", "Department", "Location", "Activity_Code","Center") , sep = "\\-", fill = "left") 
+  separate("Account", c("Company_Code", "account", "expense_code", "department", "location", "activity","center") , sep = "\\-", fill = "left") 
 
 #2) Trim Whitespace
 Budget_Information_Transformed <- data.frame(lapply(Budget_Information_Transformed, trimws) , stringsAsFactors = FALSE) 
@@ -107,13 +107,10 @@ Budget_Information_Transformed <- data.frame(lapply(Budget_Information_Transform
 rm(Budget_Information)
 ```
 
-#Test Vectors to Ensure that data will merge:
-Vector,types are tested to ensure data will merge appropriately starting with GL, and followed by Avantis Data 
-GL: 
-
 ###View Avantis Data frame to ensure join call will funciton
 ```{r,View_Data_Avantis_Tranformed,include=FALSE}
 head(Avantis_Transformed) 
+str(GL_Transformed)
 ```
 
 ###View GL Data frame to ensure join call will funciton
@@ -124,66 +121,86 @@ str(GL_Transformed)
 
 ##Merge GL & Avantis Data Sets: 
 The merge funciton is called to link the GL base data with the needed details from the Avantis Purchase Order,Data.  
-```{r,MergeGL&Avantis}
-GL_Final <-  merge(GL_Transformed,Avantis_Transformed, 
-                                        by.x = c("account","department","expense_code", "SumOftrans_amt","posting_yr","posting_pd"),
-                                        by.y = c("Account.Number","Department","Expense.Code","Extended.line.amount_1","Year","Month") ,all.x = TRUE) 
+This will be conducted using a data table merge, to ensure that additional data will not be appended to the final merged table. 
 
-#remove GL_Transformed
-rm(GL_Transformed)
+Starting with creating the data tabels below for the Avantis data set, followed by the GL data set: 
+```{r,createdt}
+dt.Avantis_transformed <- data.table(Avantis_Transformed, keep.rownames = TRUE, stringsAsFactors = FALSE)
+dt.GL_transformed <- data.table(GL_Transformed, keep.rownames = TRUE,  stringsAsFactors = FALSE)
 ```
 
+Next we will merge the data tables to create the GL_Final data set, this merge along with the column names call ensure that the first GL table remains in tact with the same number of rows and only adds data & columns from the Avantis data.
+```{r,DTJoin,error = FALSE}
+GL_Final <- merge(dt.GL_transformed,dt.Avantis_transformed, all.x = TRUE, sort = FALSE)
+#get the columns of tables 
+leftCols <- colnames(dt.GL_transformed)
+rightCols <- colnames(dt.Avantis_transformed)
+#remove the match key in the right table
+rightCols <- setdiff(rightCols,key(dt.Avantis_transformed))
+#set column order
+setcolorder(GL_Final,c(leftCols,rightCols))
+```
+ Finally check sums below to ensrue that the original table values have been preserved: 
+```{r,checksums}
+GL_Transformed$SumOftrans_amt <- as.numeric(as.character(GL_Transformed$SumOftrans_amt))
+sum(GL_Transformed$SumOftrans_amt)
+
+GL_Final$SumOftrans_amt <- as.numeric(as.character(GL_Final$SumOftrans_amt))
+sum(GL_Final$SumOftrans_amt, na.rm = FALSE)
+```
+Delete un-needed data
+```{r,delete}
+rm(dt.GL_transformed)
+rm(dt.Avantis_transformed)
+rm(GL_Transformed)
+rm(leftCols)
+rm(rightCols)
+```
 ##Bind budget data to GL_Final 
-This will bind the budget data frame to the GL_Final data frame so that both budget and actual expenditures can be viewed from a singled data frame
+This will bind the budget data frame to the GL_Final data frame so that both budget and actual expenditures can be viewed from a singled data frame, 13,621 original observations + budget 7,356 = Total observations 21,007
 
 ```{r,Bind_GL&Budget}
 GL_Final <- bind_rows(GL_Final, Budget_Information_Transformed) 
 ```
-
 ##Incorporate and clean up Budget Data in GL 
 This process is moving the same column information from the budget data merge, and moving it to the same columns of the base GL Data, this is a process needed to clean the data up so that only pertinant columns are used
 
-First na's will be removed so that data can be moved/cleaned
-```{r, natoblank}
-GL_Final[is.na(GL_Final) ] <- ""
-```
-
-Next incorporate budget data into base data
+Incorporate budget data into base data
 ```{r,Incorporate_BudgetData}
 #Incorporate Budget into base data 
-GL_Final$account <- ifelse(GL_Final$account == "", 
+GL_Final$account <- ifelse(is.na(GL_Final$account) & GL_Final$Types == "BUDGET", 
                            GL_Final$Account_Number, 
                            GL_Final$account) #move budget account to GL account column
 
-GL_Final$expense_code <- ifelse(GL_Final$expense_code == "",
+GL_Final$expense_code <- ifelse(is.na(GL_Final$expense_code) & GL_Final$Types == "BUDGET",
                                 GL_Final$Expense_Code,
                                 GL_Final$expense_code) #move budget expense code to G Lexpense code column
 
-GL_Final$activity <- ifelse(GL_Final$activity == "", 
+GL_Final$activity <- ifelse(is.na(GL_Final$activity) & GL_Final$Types == "BUDGET", 
                             GL_Final$Activity_Code, 
                             GL_Final$activity) #move budget activity code to GL activity code column
 
-GL_Final$department <- ifelse(GL_Final$department == "", 
+GL_Final$department <- ifelse(is.na(GL_Final$department) & GL_Final$Types == "BUDGET", 
                               GL_Final$Department, 
                               GL_Final$department)  #move budget department number,to GL department number,column
 
-GL_Final$SumOftrans_amt <- ifelse(GL_Final$SumOftrans_amt == "", 
+GL_Final$SumOftrans_amt <- ifelse(is.na(GL_Final$SumOftrans_amt) & GL_Final$Types == "BUDGET", 
                                   GL_Final$Amount, 
                                   GL_Final$SumOftrans_amt) #move budget dollar,amounant to GL SumofTrans_amt column
 
-GL_Final$posting_yr <- ifelse(GL_Final$posting_yr == "", 
+GL_Final$posting_yr <- ifelse(is.na(GL_Final$posting_yr) & GL_Final$Types == "BUDGET", 
                               GL_Final$Years, 
                               GL_Final$posting_yr) #move budget year,to GL year,column
 
-GL_Final$posting_pd <- ifelse(GL_Final$posting_pd == "", 
+GL_Final$posting_pd <- ifelse(is.na(GL_Final$posting_pd) & GL_Final$Types == "BUDGET", 
                               GL_Final$Period, 
                               GL_Final$posting_pd) #move budget month to GL month 
 
-GL_Final$location <- ifelse(GL_Final$location == "", 
+GL_Final$location <- ifelse(is.na(GL_Final$location) & GL_Final$Types == "BUDGET", 
                             GL_Final$Location, 
                             GL_Final$location) #move budget location to GL location column 
 
-GL_Final$Types <- ifelse(GL_Final$Types == "",
+GL_Final$Types <- ifelse(is.na(GL_Final$Types),
                          "ACTUAL",GL_Final$Types) #Fill blanks in Types columns to ACTUAL
 ```
 
@@ -192,7 +209,7 @@ This call allows for,easy identification of the activity code in the data.  It i
 
 ```{r,joinActivity, error=FALSE}
 GL_Final <- GL_Final %>% 
-  join(Activity_Code_Lookup, by = c("activity" = "Activity.Code"), type = "left", match = "all")
+  left_join(Activity_Code_Lookup, by = c("activity" = "Activity.Code"), match = "all")
 
 rm(Activity_Code_Lookup)
 ```
@@ -257,9 +274,7 @@ GL_Final <- data.frame(lapply(GL_Final,trimws) , stringsAsFactors = FALSE)
 Ensure that data frame manipulations have occured as intended by viewing GL_Final head
 ```{r,head}
 head(GL_Final) 
-head(SeasonLookup)
 sapply(GL_Final$posting_pd,class)
-sapply(SeasonLookup$posting_pd,class)
 ```
 ##Add Capital or,O&M designations to GL_Final
 Accounts under,number,140000 are capital accounts , all others are O&M
@@ -281,10 +296,6 @@ SeasonLookup
 ###Merge Season with base data 
 ```{r, season}
 GL_Final <- merge(GL_Final,SeasonData,by = "posting_pd", all.x = TRUE)
-```
-Replace GL_Final NAs with blank
-```{r,Replace_GL_NAs}
-GL_Final[is.na(GL_Final) ] <- ""
 ```
 Convert SumOfTrans_amt to numeric for stats
 ```{r, sumoftransamttonumeric, error=FALSE}
