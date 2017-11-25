@@ -276,11 +276,13 @@ Ensure that data frame manipulations have occured as intended by viewing GL_Fina
 head(GL_Final) 
 sapply(GL_Final$posting_pd,class)
 ```
-##Add Capital or,O&M designations to GL_Final
-Accounts under,number,140000 are capital accounts , all others are O&M
+##Add Capital, Billable or,O&M designations to GL_Final
+Accounts under,number,140000 are capital accounts , 140,000's are billable, and all others are O&M
 ```{r,Add_AccountDesignations}
 GL_Final$Designation <- ""
-GL_Final$Designation <- ifelse(GL_Final$account < 140000,"Capital" ," O&M") 
+GL_Final$Designation <- ifelse(GL_Final$account < 140000, "Capital", ifelse(14000<GL_Final$account & GL_Final$account <180000, "Billable", ifelse(GL_Final$account == 514201,"Billable"," O&M")))
+
+
 ```
 
 ##Add seasonal designations to GL_Final
