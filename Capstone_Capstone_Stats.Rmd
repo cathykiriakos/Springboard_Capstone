@@ -8,14 +8,18 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+Choose appropriate libraries for stats calcs
 ```{r, include=FALSE}
 library(reshape)
 library(reshape2)
 library(tables)
 library(ggplot2)
 ```
-
-
+Set options
+```{r, include = FALSE}
+options(scipen = 999)
+options(digits = 2)
+```
 ##Can you count something interesting? 
 Counts in budget data are not very indiciative of trends, but sums by category are.  Below we will see summaries of O&M expenditures by year.
 
@@ -38,7 +42,6 @@ Budget_2017 <- filter(GL_Final,grepl("2017", posting_yr) &  grepl("O&M", Designa
 
 head(Results_2017)
 head(Budget_2017)
-
 ```
 Next we will create tables to view expenditures by expense code, activity code and account number within their respective years vs. their respected budget amounts:
 Starting with a 2015 summary: here we will melt the data to indicate id variables & measure variables 
@@ -58,12 +61,12 @@ Melt2017Bud <- melt(Budget_2017, id.vars = c("Expense.Code.Description", "Activi
 #view first few rows of melted data sets
 head(Melt2015Res)
 head(Melt2015Bud)
-head(Melt2016Res)
-head(Melt2016Bud)
+head(Melt2017Res)
+head(Melt2017Bud)
 head(Melt2017Res)
 head(Melt2017Bud)
 ```
-Now that the data is melted we can cast to build a pivot table summary: 
+Now that the data is melted we can cast to build a pivot table summary, here we can see expenditure totals for each season in a given year: 
 
 ```{r, cast}
 cast(Melt2015Res, Expense.Code.Description + Activity.Description + account + Types + Season ~ variable, sum, margins = TRUE)
@@ -80,28 +83,296 @@ cast(Melt2017Bud, Expense.Code.Description + Activity.Description + account + Ty
 
 ```
 
-
-
 ##Can you find some trends (high, low, increase, decrease, anomalies)?
-```{r}
+Contracted Services & Materials/Supplies - expense codes 62 and 47 respectively are the categories that vary exponentially, and would be the best to look at, we will first start by subsetting the budget and expenditure data for the expense code and season below: 
+```{r, subsetdata}
+#2015 EC 62 Subsetted data by season:
 
+CS15SPRES <- subset(Melt2015Res,Season = "Spring", expense_code = "62")
+CS15SPBUD <- subset(Melt2015Bud, Season = "Spring", expense_code = "62")
+
+CS15SURES <- subset(Melt2015Res,Season = "Summer", expense_code = "62")
+CS15SUBUD <- subset(Melt2015Bud, Season = "Summer", expense_code = "62")
+
+CS15WIRES <- subset(Melt2015Res,Season = "Winter", expense_code = "62")
+CS15WIBUD <- subset(Melt2015Bud, Season = "Winter", expense_code = "62")
+
+CS15FARES <- subset(Melt2015Res,Season = "Fall", expense_code = "62")
+CS15FABUD <- subset(Melt2015Bud, Season = "Fall", expense_code = "62")
+
+#2017 EC 62 Subsetted data by season:
+
+CS16SPRES <- subset(Melt2016Res,Season = "Spring", expense_code = "62")
+CS16SPBUD <- subset(Melt2016Bud, Season = "Spring", expense_code = "62")
+
+CS16SURES <- subset(Melt2016Res,Season = "Summer", expense_code = "62")
+CS16SUBUD <- subset(Melt2016Bud, Season = "Summer", expense_code = "62")
+
+CS16WIRES <- subset(Melt2016Res,Season = "Winter", expense_code = "62")
+CS16WIBUD <- subset(Melt2016Bud, Season = "Winter", expense_code = "62")
+
+CS16FARES <- subset(Melt2016Res,Season = "Fall", expense_code = "62")
+CS16FABUD <- subset(Melt2016Bud, Season = "Fall", expense_code = "62")
+
+#2017 EC 62 Subsetted data by season:
+
+CS17SPRES <- subset(Melt2017Res,Season = "Spring", expense_code = "62")
+CS17SPBUD <- subset(Melt2017Bud, Season = "Spring", expense_code = "62")
+
+CS17SURES <- subset(Melt2017Res,Season = "Summer", expense_code = "62")
+CS17SUBUD <- subset(Melt2017Bud, Season = "Summer", expense_code = "62")
+
+CS17WIRES <- subset(Melt2017Res,Season = "Winter", expense_code = "62")
+CS17WIBUD <- subset(Melt2017Bud, Season = "Winter", expense_code = "62")
+
+CS17FARES <- subset(Melt2017Res,Season = "Fall", expense_code = "62")
+CS17FABUD <- subset(Melt2017Bud, Season = "Fall", expense_code = "62")
+
+#2015 EC 47 Subsetted data by season:
+
+MS15SPRES <- subset(Melt2015Res,Season = "Spring", expense_code = "47")
+MS15SPBUD <- subset(Melt2015Bud, Season = "Spring", expense_code = "47")
+
+MS15SURES <- subset(Melt2015Res,Season = "Summer", expense_code = "47")
+MS15SUBUD <- subset(Melt2015Bud, Season = "Summer", expense_code = "47")
+
+MS15WIRES <- subset(Melt2015Res,Season = "Winter", expense_code = "47")
+MS15WIBUD <- subset(Melt2015Bud, Season = "Winter", expense_code = "47")
+
+MS15FARES <- subset(Melt2015Res,Season = "Fall", expense_code = "47")
+MS15FABUD <- subset(Melt2015Bud, Season = "Fall", expense_code = "47")
+
+#2016 EC 47 Subsetted data by season:
+
+MS16SPRES <- subset(Melt2016Res,Season = "Spring", expense_code = "47")
+MS16SPBUD <- subset(Melt2016Bud, Season = "Spring", expense_code = "47")
+
+MS16SURES <- subset(Melt2016Res,Season = "Summer", expense_code = "47")
+MS16SUBUD <- subset(Melt2016Bud, Season = "Summer", expense_code = "47")
+
+MS16WIRES <- subset(Melt2016Res,Season = "Winter", expense_code = "47")
+MS16WIBUD <- subset(Melt2016Bud, Season = "Winter", expense_code = "47")
+
+MS16FARES <- subset(Melt2016Res,Season = "Fall", expense_code = "47")
+MS16FABUD <- subset(Melt2016Bud, Season = "Fall", expense_code = "47")
+
+#2017 EC 47 Subsetted data by season:
+
+MS17SPRES <- subset(Melt2017Res,Season = "Spring", expense_code = "47")
+MS17SPBUD <- subset(Melt2017Bud, Season = "Spring", expense_code = "47")
+
+MS17SURES <- subset(Melt2017Res,Season = "Summer", expense_code = "47")
+MS17SUBUD <- subset(Melt2017Bud, Season = "Summer", expense_code = "47")
+
+MS17WIRES <- subset(Melt2017Res,Season = "Winter", expense_code = "47")
+MS17WIBUD <- subset(Melt2017Bud, Season = "Winter", expense_code = "47")
+
+MS17FARES <- subset(Melt2017Res,Season = "Fall", expense_code = "47")
+MS17FABUD <- subset(Melt2017Bud, Season = "Fall", expense_code = "47")
+```
+Now that the data is subsetted we can look at mean, min, and max for each category as compared to its budget 
+```{r}
+#2015 Contracted Services Actuals vs. Budget: 
+#Spring
+format(cast(CS15SPRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS15SPBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Summer
+format(cast(CS15SURES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS15SUBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Fall
+format(cast(CS15FARES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS15FABUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Winter:
+format(cast(CS15WIRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS15WIBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+```
+```{r}
+#2016 Contracted Services Actuals vs. Budget: 
+#Spring
+format(cast(CS16SPRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS16SPBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Summer
+format(cast(CS16SURES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS16SUBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Fall
+format(cast(CS16FARES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS16FABUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Winter:
+format(cast(CS16WIRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS16WIBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
 ```
 
 
-Can you make a bar plot or a histogram?
 ```{r}
+#2017 Contracted Services Actuals vs. Budget: 
+#Spring
+format(cast(CS17SPRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
 
+format(cast(CS17SPBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Summer
+format(cast(CS17SURES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS17SUBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Fall
+format(cast(CS17FARES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS17FABUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Winter:
+format(cast(CS17WIRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(CS17WIBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+```
+```{r}
+#2015 Materials & Services Actuals vs. Budget: 
+#Spring
+format(cast(MS15SPRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS15SPBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Summer
+format(cast(MS15SURES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS15SUBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Fall
+format(cast(MS15FARES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS15FABUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Winter:
+format(cast(MS15WIRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS15WIBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+```
+```{r}
+#2016 Materials & Services Actuals vs. Budget: 
+#Spring
+format(cast(MS16SPRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS16SPBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Summer
+format(cast(MS16SURES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS16SUBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Fall
+format(cast(MS16FARES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS16FABUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Winter:
+format(cast(MS16WIRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS16WIBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
 ```
 
 
-Can you compare two related quantities?
 ```{r}
+#2017 Materials & Services Actuals vs. Budget: 
+#Spring
+format(cast(MS17SPRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
 
+format(cast(MS17SPBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Summer
+format(cast(MS17SURES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS17SUBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Fall
+format(cast(MS17FARES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS17FABUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+#Winter:
+format(cast(MS17WIRES, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+
+format(cast(MS17WIBUD, Activity.Description + account  ~ variable, c(sum,mean,min,max), margins = TRUE),scientific = FALSE)
+```
+##Can you make a bar plot or a histogram? Can you compare two related quantities?
+Yes, both can be accomplished below we will compare yearly results to budget in Contracted Services and Materials and Services for the three years sampled.
+```{r}
+#Plot 2015 Contracted Services: subset data
+CSPlot2015 <- filter(GL_Final,grepl("2015", posting_yr) &  grepl("O&M", Designation) &  grepl("62",expense_code))
+
+
+CSBar15 <- ggplot(CSPlot2015, aes(posting_pd, SumOftrans_amt))+
+         geom_bar(stat = "identity", aes(fill = Types), position = "dodge", na.rm = TRUE)+
+  xlab("posting_pd")+ylab("Expenditures")+theme_bw()
+        
+CSBar15  
+
+#Plot 2016 Contracted Services: subset data
+CSPlot2016 <- filter(GL_Final,grepl("2016", posting_yr) &  grepl("O&M", Designation) &  grepl("62",expense_code))
+
+
+CSBar16 <- ggplot(CSPlot2016, aes(posting_pd, SumOftrans_amt))+
+         geom_bar(stat = "identity", aes(fill = Types), position = "dodge", na.rm = TRUE)+
+  xlab("posting_pd")+ylab("Expenditures")+theme_bw()
+        
+CSBar16
+
+#Plot 2017 Contracted Services: subset data
+CSPlot2017 <- filter(GL_Final,grepl("2017", posting_yr) &  grepl("O&M", Designation) &  grepl("62",expense_code))
+
+
+CSBar17 <- ggplot(CSPlot2017, aes(posting_pd, SumOftrans_amt))+
+         geom_bar(stat = "identity", aes(fill = Types), position = "dodge", na.rm = TRUE)+
+  xlab("posting_pd")+ylab("Expenditures")+theme_bw()
+        
+CSBar17
+
+#Plot 2015 Materials & Services: subset data
+MSPlot2015 <- filter(GL_Final,grepl("2015", posting_yr) &  grepl("O&M", Designation) &  grepl("47",expense_code))
+
+
+MSBar15 <- ggplot(MSPlot2015, aes(posting_pd, SumOftrans_amt))+
+         geom_bar(stat = "identity", aes(fill = Types), position = "dodge", na.rm = TRUE)+
+  xlab("posting_pd")+ylab("Expenditures")+theme_bw()
+        
+MSBar15  
+
+#Plot 2016 Materials & Services: subset data
+MSPlot2016 <- filter(GL_Final,grepl("2016", posting_yr) &  grepl("O&M", Designation) &  grepl("47",expense_code))
+
+
+MSBar16 <- ggplot(MSPlot2016, aes(posting_pd, SumOftrans_amt))+
+         geom_bar(stat = "identity", aes(fill = Types), position = "dodge", na.rm = TRUE)+
+  xlab("posting_pd")+ylab("Expenditures")+theme_bw()
+        
+MSBar16
+
+#Plot 2017 Materials & Services: subset data
+MSPlot2017 <- filter(GL_Final,grepl("2017", posting_yr) &  grepl("O&M", Designation) &  grepl("47",expense_code))
+
+
+MSBar17 <- ggplot(MSPlot2017, aes(posting_pd, SumOftrans_amt))+
+         geom_bar(stat = "identity", aes(fill = Types), position = "dodge", na.rm = TRUE)+
+  xlab("posting_pd")+ylab("Expenditures")+theme_bw()
+        
+MSBar17
 ```
 
-
-Can you make a scatterplot?
-```{r}
+##Can you make a scatterplot?
+```{r, scatterplot}
 
 ```
 
@@ -113,5 +384,3 @@ Can you make a time-series plot?
 
 
 Having made these plots, what are some insights you get from them? Do you see any correlations? Is there a hypothesis you would like to investigate further? What other questions do they lead you to ask?
-
-2 Project: Submit a short report on your s
