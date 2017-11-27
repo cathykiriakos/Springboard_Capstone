@@ -20,6 +20,13 @@ Set options
 options(scipen = 999)
 options(digits = 2)
 ```
+Load File: 
+```{r, load}
+path <- file.path("C:", "Users","kiriakosc", ".git", "Springboard_Capstone") 
+GL_Final <-read.csv(file.path(path,"GL_Final.csv"),header = TRUE, stringsAsFactors = FALSE ) 
+```
+
+
 ##Can you count something interesting? 
 Counts in budget data are not very indiciative of trends, but sums by category are.  Below we will see summaries of O&M expenditures by year.
 
@@ -371,16 +378,57 @@ MSBar17 <- ggplot(MSPlot2017, aes(posting_pd, SumOftrans_amt))+
 MSBar17
 ```
 
-##Can you make a scatterplot?
+##Can you make a scatterplot? Can you make a time-series plot?
+Yes we will scatterplot expenditures by month for each year sampled for Contracted Services & Materials & Supplies.  This is both a timeseries and a scatter plot.  
 ```{r, scatterplot}
+#Contracted Services 2015
+ggplot(CSPlot2015, aes(x = posting_pd, y = SumOftrans_amt, color = activity )) +
+  geom_point(data = subset(CSPlot2015, Types == "ACTUAL"))+
+  scale_color_gradient()+
+  ggtitle("2015 Contracted Services by Activity Code")+
+  labs(x = "Posting Period", y = "Expenditures")
 
+#Contracted Services 2016
+ggplot(CSPlot2016, aes(x = posting_pd, y = SumOftrans_amt, color = activity )) +
+  geom_point(data = subset(CSPlot2015, Types == "ACTUAL"))+
+  scale_color_gradient()+
+  ggtitle("2016 Contracted Services by Activity Code")+
+  labs(x = "Posting Period", y = "Expenditures")
+
+#Contracted Services 2017
+ggplot(CSPlot2017, aes(x = posting_pd, y = SumOftrans_amt, color = activity )) +
+  geom_point(data = subset(CSPlot2015, Types == "ACTUAL"))+
+  scale_color_gradient()+
+  ggtitle("2017 Contracted Services by Activity Code")+
+  labs(x = "Posting Period", y = "Expenditures")
+#Materials & Supplies 2015
+ggplot(MSPlot2015, aes(x = posting_pd, y = SumOftrans_amt, color = activity )) +
+  geom_point(data = subset(MSPlot2015, Types == "ACTUAL"))+
+  scale_color_gradient()+
+  ggtitle("2015 Materials & Supplies by Activity Code")+
+  labs(x = "Posting Period", y = "Expenditures")
+
+#Materials & Supplies 2016
+ggplot(MSPlot2016, aes(x = posting_pd, y = SumOftrans_amt, color = activity )) +
+  geom_point(data = subset(MSPlot2015, Types == "ACTUAL"))+
+  scale_color_gradient()+
+  ggtitle("2016 Materials & Supplies by Activity Code")+
+  labs(x = "Posting Period", y = "Expenditures")
+
+#Materials & Supplies 2017
+ggplot(MSPlot2017, aes(x = posting_pd, y = SumOftrans_amt, color = activity )) +
+  geom_point(data = subset(MSPlot2015, Types == "ACTUAL"))+
+  scale_color_gradient()+
+  ggtitle("2017 Materials & Supplies by Activity Code")+
+  labs(x = "Posting Period", y = "Expenditures")
+
+
+  
 ```
+##Having made these plots, what are some insights you get from them? Do you see any correlations? Is there a hypothesis you would like to investigate further? What other questions do they lead you to ask?
+
+These plots have shown that to our departments, annual budget is more important than getting the monthly allocations reflected accordingly. This furthers the need for accurate forecasting for budget development. At this point in time, it is apparent when there are outage expendiutres, the lowest of activity codes, and that there are spikes in these areas. It appears that seasonal breakdown of expenditutres will be a good way of developing a forecasting method. 
 
 
-Can you make a time-series plot?
-```{r}
-
-```
 
 
-Having made these plots, what are some insights you get from them? Do you see any correlations? Is there a hypothesis you would like to investigate further? What other questions do they lead you to ask?
