@@ -138,7 +138,7 @@ rightCols <- colnames(dt.Avantis_transformed)
 #remove the match key in the right table
 rightCols <- setdiff(rightCols,key(dt.Avantis_transformed))
 #set column order
-setcolorder(GL_Final,c(leftCols,rightCols))
+#setcolorder(GL_Final,c(leftCols,rightCols))#Not needed
 ```
  Finally check sums below to ensrue that the original table values have been preserved: 
 ```{r,checksums}
