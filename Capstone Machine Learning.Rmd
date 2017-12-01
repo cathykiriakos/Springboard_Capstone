@@ -1,0 +1,44 @@
+---
+title: "Springboard Capstone - Machine Learning"
+author: "Cathy Kiriakos"
+date: "December 1, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1) How do you frame your main question as a machine learning problem? 
+##Is it a supervised or unsupervised problem? If it is supervised, is it a regression or a classification?
+
+The main question as a machine learning propblem is to identify the most suitable expenditure forecast for my organizations facilities department.  This will be a regression based off of three years of expenditure data categorized by season.  In additon to add an additional layer of data, I plan to pull historical Northern Colorado weather information for the years studied. 
+
+#2) What are the main features (also called independent variables or predictors) that you'll use?
+
+THe independent variables will include season, weather, and historical expenditures. 
+
+#3) Which machine learning technique will you use? 
+The Machine learning technique I plant to use will be a time-series regression
+
+#4) How will you evaluate the success of your machine learning technique? What metric will you use?
+
+To evaluate the sucess of this machine learning tecnique I will view the results summary of the regressions and find the most significant variables.
+
+#Data Manipulations needed: 
+ First we will melt the data and create a new data frame with all 3 years of data summed by expense code, activiy code, and account number.  We wil first filter the data set, and then melt and cast the data to obtain sums by expense code, activity code, and account number:
+```{r,subset_data}
+FacResults <- filter(GL_Final, grepl("O&M", Designation))
+```
+Next we will melt the data and create new data frames for the analysis: 
+```{r, melt}
+MeltFacRes <- melt(FacResults, id.vars = c("expense_code","activity","account","Expense.Code.Description", "Activity.Description","Types", "Season","posting_pd", "posting_yr"),
+                   measure.vars = "SumOftrans_amt", na.rm = TRUE)
+```
+Final data prep step to cast the data: 
+```{r, cast}
+castRes <- cast(MeltFacRes, expense_code + activity + account + Expense.Code.Description +  Activity.Description + Types +  Season + posting_pd +  posting_yr ~ variable, sum, margins = TRUE)
+
+head(castRes)
+```
+
