@@ -26,19 +26,42 @@ The Machine learning technique I plant to use will be a time-series regression
 To evaluate the sucess of this machine learning tecnique I will view the results summary of the regressions and find the most significant variables.
 
 #Data Manipulations needed: 
- First we will melt the data and create a new data frame with all 3 years of data summed by expense code, activiy code, and account number.  We wil first filter the data set, and then melt and cast the data to obtain sums by expense code, activity code, and account number:
+First we will melt the data and create a new data frame with all 3 years of data summed by expense code, activiy code, and account number.  We wil first filter the data set, add in weather data, and then melt and cast the data to obtain sums by expense code, activity code, and account number:
 ```{r,subset_data}
 FacResults <- filter(GL_Final, grepl("O&M", Designation))
 ```
+
 Next we will melt the data and create new data frames for the analysis: 
 ```{r, melt}
 MeltFacRes <- melt(FacResults, id.vars = c("expense_code","activity","account","Expense.Code.Description", "Activity.Description","Types", "Season","posting_pd", "posting_yr"),
                    measure.vars = "SumOftrans_amt", na.rm = TRUE)
 ```
-Final data prep step to cast the data: 
+Cast the data: 
 ```{r, cast}
 castRes <- cast(MeltFacRes, expense_code + activity + account + Expense.Code.Description +  Activity.Description + Types +  Season + posting_pd +  posting_yr ~ variable, sum, margins = TRUE)
 
-head(castRes)
 ```
+Incorporate temperature averages: 
+```{r, load_temps, error=FALSE}
+HistWeath <- read.csv(file.path(path,"HistoricalAvg.csv"),header = TRUE, stringsAsFactors = FALSE ) 
+HistWeath$Month <- as.numeric(as.character(HistWeath$Month))
+castRes$posting_pd <- as.numeric(as.character(castRes$posting_pd))
+
+#Hisorical weather data http://www.intellicast.com/Local/History.aspx?month=12
+```
+data frame merge average Weather data to CastRes on date using month
+```{r, join_temps}
+dt.castRes <- data.table(castRes, keep.rownames = TRUE, stringsAsFactors = FALSE)
+dt.HistWeath <- data.table(HistWeath, keep.rownames = TRUE,  stringsAsFactors = FALSE)
+
+CastDataFinal <- merge(dt.castRes,dt.HistWeath, all.x = TRUE, sort = FALSE)
+                       
+#get the columns of tables 
+leftCols <- colnames(dt.castRes)
+rightCols <- colnames(dt.HistWeath)
+#remove the match key in the right table
+rightCols <- setdiff(rightCols,key(dt.HistWeath))
+```
+
+
 
